@@ -1,0 +1,11 @@
+/** Monomakh **/
+@font-face {
+	font-family: 'Monomakh';
+	src: url('fonts/MonomakhUnicode.eot');
+	src: local('☺'), url('fonts/MonomakhUnicode.woff') format('woff'),
+					 url('fonts/MonomakhUnicode.ttf') format('truetype'),
+					 url('fonts/MonomakhUnicode.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
