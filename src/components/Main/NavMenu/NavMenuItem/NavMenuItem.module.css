@@ -1,0 +1,48 @@
+.root {
+    width: 25rem;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+
+}
+
+.root > * {
+    padding: 1rem;
+    margin: 3px;
+
+    border: 1px solid #ba7338;
+
+    background-color: #d5b08d;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.root:first-child > * {
+    margin-top: 0;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+
+    width: 3rem;
+    height: 3rem;
+
+    fill: #ba7338;
+}
+
+.link {
+    font-size: 2rem;
+
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+
+    color: #ba7338;
+}
+
+.root:last-child {
+    margin-top: 5rem;
+}

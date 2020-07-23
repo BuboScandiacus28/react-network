@@ -11,8 +11,9 @@ const Posts = () => {
                 <button className={Style.submit}>Высѣчь ​рꙋны​</button>
             </form>
             <ul className={Style.list}>
-                <Post />
-                <Post />        
+                <Post message="Нꙋ гдѣ же ​всѣ​ славѧне?"/>
+                <Post message="​Сварогъ​ - истинный богъ!"/>   
+                <Post message="​Кто на Ивана Кꙋпала?"/>      
             </ul>
             
         </div>
