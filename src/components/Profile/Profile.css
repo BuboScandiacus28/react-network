@@ -1,0 +1,41 @@
+main .line {
+    margin: 0 1.5rem 0 1.1rem;
+
+    height: auto;
+}
+
+.profile {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.profile-photo-container {
+    width: 20rem;
+    height: 22rem;
+
+    border: 1px solid #ba7338;
+    border-radius: 5px;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.profile-photo {
+    border-radius: 5px;
+    width: 100%;
+}
+
+.profile-information-container {
+    margin-left: 5rem;
+}
+
+.profile-information-container h1 {
+    font-size: 3rem;
+
+    margin-bottom: 3rem;
+}
+
+.profile-information-container h2 {
+    font-size: 1.5rem;
+
+    margin-top: 0.5rem;
+}

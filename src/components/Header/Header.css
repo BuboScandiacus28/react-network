@@ -1,0 +1,47 @@
+header {
+    color: #ba7338;
+    background-color: #d5b08d;
+
+    border-bottom: 1px solid #ba7338;
+
+    padding: 1rem 3rem;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.logo-container {
+    width: 25rem;
+    height: 7.5rem;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo {
+    width: 7.5rem;
+    height: 7.5rem;
+}
+
+.logo-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-title {
+    font-size: 3rem;
+}
+
+.logo-sub-title {
+    font-size: 1rem;
+}
+
+.line {
+    height: 7.5rem;
+    width: 1px;
+
+    background-color: #ba7338;
+
+    margin: 0 1.5rem;
+}
