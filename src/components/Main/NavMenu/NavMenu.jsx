@@ -7,14 +7,14 @@ const NavMenu = () => {
         <aside>
           <nav className={Style.menu}>
             <ul>
-              <NavMenuItem iconId="algiz" title="Моꙗ страница"/>
-              <NavMenuItem iconId="eihwaz" title="Новости"/>
-              <NavMenuItem iconId="laguz" title="Соѻбщенїꙗ"/>
-              <NavMenuItem iconId="mannaz" title="Дрꙋзьꙗ"/>
-              <NavMenuItem iconId="nauthiz" title="Соѻбщества"/>
-              <NavMenuItem iconId="raido" title="Фотографїи"/>
-              <NavMenuItem iconId="thurisaz" title="Мꙋзыка"/>
-              <NavMenuItem iconId="fehu" title="Настройкы"/>
+              <NavMenuItem href="/profile" iconId="algiz" title="Моꙗ страница"/>
+              <NavMenuItem href="/news" iconId="eihwaz" title="Новости"/>
+              <NavMenuItem href="/dialogs" iconId="laguz" title="Соѻбщенїꙗ"/>
+              <NavMenuItem href="/friends" iconId="mannaz" title="Дрꙋзьꙗ"/>
+              <NavMenuItem href="/groups" iconId="nauthiz" title="Соѻбщества"/>
+              <NavMenuItem href="/photos" iconId="raido" title="Фотографїи"/>
+              <NavMenuItem href="/musics" iconId="thurisaz" title="Мꙋзыка"/>
+              <NavMenuItem href="/setings" iconId="fehu" title="Настройкы"/>
             </ul>
           </nav>
         </aside>

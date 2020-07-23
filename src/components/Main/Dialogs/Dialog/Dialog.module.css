@@ -1,0 +1,26 @@
+.root {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+
+    border-bottom: 1px solid #ba7338;
+}
+
+.online {
+    width: 1rem;
+    height: 1rem;
+
+    border: 1px solid #ba7338;
+    border-radius: 50%;
+
+    background-color: #d5b08d;
+
+    margin-right: 1rem;
+}
+
+.title {
+    line-height: 100%;
+}

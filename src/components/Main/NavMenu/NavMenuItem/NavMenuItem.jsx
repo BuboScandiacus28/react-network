@@ -1,5 +1,6 @@
 import React from 'react';
 import Style from './NavMenuItem.module.css';
+import { NavLink } from 'react-router-dom';
 
 const NavMenuItem = (props) => {
     return (
@@ -7,7 +8,7 @@ const NavMenuItem = (props) => {
         <svg className={Style.icon}>
           <use xlinkHref={`#icon-${props.iconId}`}></use>
         </svg>
-    <a href="#" className={Style.link}>{props.title}</a>
+    <NavLink to={props.href} className={Style.link}>{props.title}</NavLink>
       </li>
     );
 }

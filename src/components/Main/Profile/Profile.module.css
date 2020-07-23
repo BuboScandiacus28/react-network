@@ -1,4 +1,4 @@
-.root {
+.information {
     display: flex;
     justify-content: flex-start;
 }
@@ -18,17 +18,17 @@
     width: 100%;
 }
 
-.information_container {
+.description_container {
     margin-left: 5rem;
 }
 
-.information_container h1 {
+.description_container h1 {
     font-size: 3rem;
 
     margin-bottom: 3rem;
 }
 
-.information_container h2 {
+.description_container h2 {
     font-size: 1.5rem;
 
     margin-top: 0.5rem;

@@ -1,0 +1,27 @@
+.root {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.line {
+    height: auto;
+    width: 1px;
+
+    background-color: #ba7338;
+
+    margin: 0 1.5rem 0 2rem;
+}
+
+.messages_container {
+    min-width: 70rem;
+    max-height: 70vh;
+
+    overflow-y: scroll;
+
+    border: 1px solid #ba7338;
+    border-radius: 10px;
+
+    background-color: #d5b08d;
+
+    padding: 2rem;
+}
