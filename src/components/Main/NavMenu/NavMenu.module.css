@@ -2,7 +2,7 @@
     padding: auto 3rem;
 }
 
-.menu-item {
+.menu_item {
     width: 25rem;
 
     display: flex;
@@ -11,7 +11,7 @@
 
 }
 
-.menu-item>* {
+.menu_item > * {
     padding: 1rem;
     margin: 3px;
 
@@ -22,11 +22,11 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.menu-item:first-child>* {
+.menu_item:first-child>* {
     margin-top: 0;
 }
 
-.menu-icon {
+.menu_icon {
     display: flex;
     justify-content: center;
 
@@ -36,7 +36,7 @@
     fill: #ba7338;
 }
 
-.menu-item-link {
+.menu_item_link {
     font-size: 2rem;
 
     flex-grow: 1;
@@ -47,6 +47,6 @@
     color: #ba7338;
 }
 
-.menu-item:last-child {
+.menu_item:last-child {
     margin-top: 5rem;
 }

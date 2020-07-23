@@ -1,19 +1,19 @@
 import React from 'react';
-import './Header.css';
+import Style from './Header.module.css';
 
 const Header = () => {
     return (
         <header>
-            <div className="logo-container">
-            <svg className="logo">
+            <div className={Style.logo_container}>
+            <svg className={Style.logo}>
                 <use xlinkHref="#icon-logo"></use>
             </svg>
-            <div className="logo-text-container">
-                <h1 className="logo-title">Кыриллица</h1>
-                <h2 className="logo-sub-title">Соцїальнаꙗ сѣть длѧ старовѣровъ</h2>
+            <div className={Style.logo_text_container}>
+                <h1 className={Style.logo_title}>Кыриллица</h1>
+                <h2 className={Style.logo_sub_title}>Соцїальнаꙗ сѣть длѧ старовѣровъ</h2>
             </div>
             </div>
-            <div className="line"></div>
+            <div className={Style.line}></div>
         </header>
     );
 }

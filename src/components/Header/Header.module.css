@@ -10,7 +10,7 @@ header {
     justify-content: flex-start;
 }
 
-.logo-container {
+.logo_container {
     width: 25rem;
     height: 7.5rem;
 
@@ -23,17 +23,17 @@ header {
     height: 7.5rem;
 }
 
-.logo-text-container {
+.logo_text_container {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.logo-title {
+.logo_title {
     font-size: 3rem;
 }
 
-.logo-sub-title {
+.logo_sub_title {
     font-size: 1rem;
 }
 

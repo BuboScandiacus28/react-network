@@ -1,0 +1,27 @@
+.item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin: 3rem auto;
+}
+
+.item > *:first-child {
+    margin-right: 3rem;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.icon {
+    border-radius: 50%;
+    border: 1px solid #ba7338;
+
+    background-color: #d5b08d;
+
+    width: 6rem;
+    height: 6rem;
+}
+
+.text {
+    font-size: 2rem;
+}
