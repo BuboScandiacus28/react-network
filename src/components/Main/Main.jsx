@@ -13,24 +13,24 @@ import { Route } from 'react-router-dom';
 
 
 
-const Main = () => {
+const Main = (props) => {
   return (
     <main className={Style.root}>
 
-      <NavMenu />
+      <NavMenu navMenuItemDate={props.state.navMenuItemDate} />
       
       <div className={Style.line}></div>
 
       <div class={Style.user_page}>
           
-        <Route path='/profile' component={Profile}/>
-        <Route path='/dialogs' component={Dialogs}/>
-        <Route path='/friends' component={Friends}/>
-        <Route path='/groups' component={Groups}/>
-        <Route path='/news' component={News}/>
-        <Route path='/photos' component={Photos}/>
-        <Route path='/setings' component={Setings}/>
-        <Route path='/musics' component={Musics}/>
+        <Route path='/profile' render={() => <Profile profileDate={props.state.profileDate} />} />
+        <Route path='/dialogs' render={() => <Dialogs dialogsDate={props.state.dialogsDate} />} />
+        <Route path='/friends' render={() => <Friends />} />
+        <Route path='/groups' render={() => <Groups />} />
+        <Route path='/news' render={() => <News />} />
+        <Route path='/photos' render={() => <Photos />} />
+        <Route path='/setings' render={() => <Setings />} />
+        <Route path='/musics' render={() => <Musics />} />
 
       </div>
 

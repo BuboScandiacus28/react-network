@@ -8,14 +8,14 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className="App">
         
         <Header />
 
-        <Main />
+        <Main state={props.state} />
 
         <Sprite/>
 
