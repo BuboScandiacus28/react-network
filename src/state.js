@@ -1,123 +1,148 @@
-let state = {
-    profileDate: {
-        profileInfoDate: [
-            {
-                name:"Алексѣй ​Короленко​",
-                birthday:"29 февралѧ 1988 г.",
-                city:"Кыѥвъ",
-                education:"Информацїꙗ ѻтсꙋтствꙋѥтъ",
-                webCite:"https://buboscandiacus28.github.io"
-            },
-        ], 
-        postDate: [
-            {
-                message: "Нꙋ гдѣ же ​всѣ​ славѧне?"
-            }, {
-                message: "Сварогъ​ - истинный богъ!"
-            }, {
-                message: "Кто на Ивана Кꙋпала?"
-            },
-        ],
-    },
-    
-    navMenuItemDate: [
-        {
-          href: "/profile",
-          iconId: "algiz",
-          title: "Моꙗ страница"
-        }, {
-          href: "/news",
-          iconId: "eihwaz",
-          title: "Новости"
-        }, {
-          href: "/dialogs",
-          iconId: "laguz",
-          title: "Соѻбщенїꙗ"
-        }, {
-          href: "/friends",
-          iconId: "mannaz",
-          title: "Дрꙋзьꙗ"
-        }, {
-          href: "/groups",
-          iconId: "nauthiz",
-          title: "Соѻбщества"
-        }, {
-          href: "/photos",
-          iconId: "raido",
-          title: "Фотографїи"
-        }, {
-          href: "/musics",
-          iconId: "thurisaz",
-          title: "Мꙋзыка"
-        }, {
-          href: "/setings",
-          iconId: "fehu",
-          title: "Настройкы"
+let store = {
+    _state: {
+        profilePage: {
+            profileInfoDate: [
+                {
+                    name:"Алексѣй ​Короленко​",
+                    birthday:"29 февралѧ 1988 г.",
+                    city:"Кыѥвъ",
+                    education:"Информацїꙗ ѻтсꙋтствꙋѥтъ",
+                    webCite:"https://buboscandiacus28.github.io"
+                },
+            ], 
+            postDate: [
+                {
+                    message: "Нꙋ гдѣ же ​всѣ​ славѧне?"
+                }, {
+                    message: "Сварогъ​ - истинный богъ!"
+                }, {
+                    message: "Кто на Ивана Кꙋпала?"
+                },
+            ],
+            newPostText: ''
         },
-    ],
-    dialogsDate: {
-        dialogDate: [
+        navMenuItemDate: [
             {
-              userId: "1",
-              title: "Викторъ"
+              href: "/profile",
+              iconId: "algiz",
+              title: "Моꙗ страница"
             }, {
-              userId: "2",
-              title: "Павелъ"
+              href: "/news",
+              iconId: "eihwaz",
+              title: "Новости"
             }, {
-              userId: "3",
-              title: "Алексѣй"
+              href: "/dialogs",
+              iconId: "laguz",
+              title: "Соѻбщенїꙗ"
             }, {
-              userId: "4",
-              title: "Матвѣй"
+              href: "/friends",
+              iconId: "mannaz",
+              title: "Дрꙋзьꙗ"
             }, {
-              userId: "5",
-              title: "Максимъ"
+              href: "/groups",
+              iconId: "nauthiz",
+              title: "Соѻбщества"
             }, {
-              userId: "6",
-              title: "Владиславъ"
+              href: "/photos",
+              iconId: "raido",
+              title: "Фотографїи"
             }, {
-              userId: "7",
-              title: "Михаилъ"
+              href: "/musics",
+              iconId: "thurisaz",
+              title: "Мꙋзыка"
             }, {
-              userId: "8",
-              title: "Марѳа"
+              href: "/setings",
+              iconId: "fehu",
+              title: "Настройкы"
             },
         ],
-        messageDate: [
-            {
-              user: "Ꙗ",
-              message: "Съ праздникомъ весны родичь."
-            }, {
-              user: "Матвѣй",
-              message: "И тебѧ тоже, Матвѣй. Какъ тамъ Марѳа?"
-            }, {
-              user: "Ꙗ",
-              message: "А ты что не слышалъ? Марѳа съѣла черемши съ чеснокомъ и боли въ сꙋставахъ какъ рꙋкой снѧло!"
-            }, {
-              user: "Матвѣй",
-              message: "Во истинꙋ на ​все​ волѧ Дажьбога!"
-            }, {
-              user: "Матвѣй",
-              message: "Во истинꙋ!"
-            }, {
-              user: "Ꙗ",
-              message: "Съ праздникомъ весны родичь."
-            }, {
-              user: "Матвѣй",
-              message: "И тебѧ тоже, Матвѣй. Какъ тамъ Марѳа?"
-            }, {
-              user: "Ꙗ",
-              message: "А ты что не слышалъ? Марѳа съѣла черемши съ чеснокомъ и боли въ сꙋставахъ какъ рꙋкой снѧло!"
-            }, {
-              user: "Матвѣй",
-              message: "Во истинꙋ на ​все​ волѧ Дажьбога!"
-            }, {
-              user: "Матвѣй",
-              message: "Во истинꙋ!"
-            },
-        ], 
+        dialogsPage: {
+            dialogDate: [
+                {
+                  userId: "1",
+                  title: "Викторъ"
+                }, {
+                  userId: "2",
+                  title: "Павелъ"
+                }, {
+                  userId: "3",
+                  title: "Алексѣй"
+                }, {
+                  userId: "4",
+                  title: "Матвѣй"
+                }, {
+                  userId: "5",
+                  title: "Максимъ"
+                }, {
+                  userId: "6",
+                  title: "Владиславъ"
+                }, {
+                  userId: "7",
+                  title: "Михаилъ"
+                }, {
+                  userId: "8",
+                  title: "Марѳа"
+                },
+            ],
+            messageDate: [
+                {
+                  user: "Ꙗ",
+                  message: "Съ праздникомъ весны родичь."
+                }, {
+                  user: "Матвѣй",
+                  message: "И тебѧ тоже, Матвѣй. Какъ тамъ Марѳа?"
+                }, {
+                  user: "Ꙗ",
+                  message: "А ты что не слышалъ? Марѳа съѣла черемши съ чеснокомъ и боли въ сꙋставахъ какъ рꙋкой снѧло!"
+                }, {
+                  user: "Матвѣй",
+                  message: "Во истинꙋ на ​все​ волѧ Дажьбога!"
+                }, {
+                  user: "Матвѣй",
+                  message: "Во истинꙋ!"
+                }, {
+                  user: "Ꙗ",
+                  message: "Съ праздникомъ весны родичь."
+                }, {
+                  user: "Матвѣй",
+                  message: "И тебѧ тоже, Матвѣй. Какъ тамъ Марѳа?"
+                }, {
+                  user: "Ꙗ",
+                  message: "А ты что не слышалъ? Марѳа съѣла черемши съ чеснокомъ и боли въ сꙋставахъ какъ рꙋкой снѧло!"
+                }, {
+                  user: "Матвѣй",
+                  message: "Во истинꙋ на ​все​ волѧ Дажьбога!"
+                }, {
+                  user: "Матвѣй",
+                  message: "Во истинꙋ!"
+                },
+            ], 
+        },   
     },
-      
+    getState() {
+        return this._state;
+    },
+    _updatePage() {
+
+    },
+    addPost() {
+        let newPost = {
+            id: 5,
+            message: this._state.profilePage.newPostText
+        };
+        this._state.profilePage.postDate.push(newPost);
+        this._state.profilePage.newPostText = '';
+        this._updatePage();
+    },
+    updateNewPostText(newText) {
+        this._state.profilePage.newPostText = newText;
+        this._updatePage();
+    },
+    subscribe(observer) {
+        this._updatePage = observer;
+    },
 }
 
-export default state;
+export default store;
+
+window.store = store;

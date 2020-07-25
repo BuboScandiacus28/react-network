@@ -7,12 +7,24 @@ const Posts = (props) => {
         return <Post message={el.message} />
     });
 
+    let newPostElement = React.createRef();
+
+    let addPost = (e) => {
+        props.addPost();
+        e.preventDefault();
+    };
+
+    let onPostChange = () => {
+        let text = newPostElement.current.value;
+        props.updateNewPostText(text);
+    };
+
     return (
         <div className={Style.root}>
             <h1 className={Style.title}>Мои записи</h1>
             <form action="" className={Style.form}>
-                <textarea name="" id="" className={Style.input} placeholder="ваша лѣтопись..."></textarea>
-                <button className={Style.submit}>Высѣчь ​рꙋны​</button>
+                <textarea onChange={ onPostChange } value={props.newPostText} ref={newPostElement} className={Style.input} placeholder="ваша лѣтопись..."></textarea>
+                <button onClick={ addPost } className={Style.submit}>Высѣчь ​рꙋны​</button>
             </form>
             <ul className={Style.list}>
                 {postElements}

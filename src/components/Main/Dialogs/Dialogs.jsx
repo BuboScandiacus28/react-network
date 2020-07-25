@@ -4,11 +4,11 @@ import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
 
 const Dialogs = (props) => {
-  let dialogElements = props.dialogsDate.dialogDate.map(el => {
+  let dialogElements = props.dialogsPage.dialogDate.map(el => {
     return <Dialog userId={el.userId} title={el.title} />
   });
   
-  let messageElements = props.dialogsDate.messageDate.map(el => {
+  let messageElements = props.dialogsPage.messageDate.map(el => {
     return <Message user={el.user} message={el.message} />
   });
   

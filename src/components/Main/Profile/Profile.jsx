@@ -4,14 +4,14 @@ import Posts from './Posts/Posts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
-    let profileInfoElements = props.profileDate.profileInfoDate.map(el => {
+    let profileInfoElements = props.profilePage.profileInfoDate.map(el => {
         return <ProfileInfo name={el.name} birthday={el.birthday} city={el.city} education={el.education} webCite={el.webCite}/>
     });
     
     return (
         <div className={Style.root}>
             {profileInfoElements}
-            <Posts postDate={props.profileDate.postDate}/>
+            <Posts postDate={props.profilePage.postDate} newPostText={props.profilePage.newPostText} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
         </div>
     );
 }

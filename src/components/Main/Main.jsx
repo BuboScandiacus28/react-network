@@ -23,8 +23,8 @@ const Main = (props) => {
 
       <div class={Style.user_page}>
           
-        <Route path='/profile' render={() => <Profile profileDate={props.state.profileDate} />} />
-        <Route path='/dialogs' render={() => <Dialogs dialogsDate={props.state.dialogsDate} />} />
+        <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText} />} />
+        <Route path='/dialogs' render={() => <Dialogs dialogsPage={props.state.dialogsPage} />} />
         <Route path='/friends' render={() => <Friends />} />
         <Route path='/groups' render={() => <Groups />} />
         <Route path='/news' render={() => <News />} />
