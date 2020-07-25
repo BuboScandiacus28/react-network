@@ -101,23 +101,9 @@ let store = {
                 }, {
                   user: "Матвѣй",
                   message: "Во истинꙋ!"
-                }, {
-                  user: "Ꙗ",
-                  message: "Съ праздникомъ весны родичь."
-                }, {
-                  user: "Матвѣй",
-                  message: "И тебѧ тоже, Матвѣй. Какъ тамъ Марѳа?"
-                }, {
-                  user: "Ꙗ",
-                  message: "А ты что не слышалъ? Марѳа съѣла черемши съ чеснокомъ и боли въ сꙋставахъ какъ рꙋкой снѧло!"
-                }, {
-                  user: "Матвѣй",
-                  message: "Во истинꙋ на ​все​ волѧ Дажьбога!"
-                }, {
-                  user: "Матвѣй",
-                  message: "Во истинꙋ!"
                 },
             ], 
+            newMessageText: ''
         },   
     },
     //_updatePage - метод в который будет записыватся функция перерендеринга страницы 
@@ -153,6 +139,19 @@ let store = {
         } //Действие посимвольного обновления информации в объекте _state (свойство newPostText) исходя из информации в форме
         else if (action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.newText;
+            this._updatePage();
+        } //Действие добавления нового сообщения на форму диалога и в объект _state
+        else if (action.type === 'ADD-MESSAGE') {
+          let newMessage = {
+            user: "Ꙗ",
+            message: this._state.dialogsPage.newMessageText
+          };
+          this._state.dialogsPage.messageDate.push(newMessage);
+          this._state.dialogsPage.newMessageText = '';
+          this._updatePage();
+        } //Действие посимвольного обновления информации в объекте _state (свойство newMessageText) исходя из информации в форме
+        else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.dialogsPage.newMessageText = action.newText;
             this._updatePage();
         }
     },

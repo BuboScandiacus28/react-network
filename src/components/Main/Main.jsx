@@ -24,7 +24,7 @@ const Main = (props) => {
       <div class={Style.user_page}>
           
         <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
-        <Route path='/dialogs' render={() => <Dialogs dialogsPage={props.state.dialogsPage} />} />
+        <Route path='/dialogs' render={() => <Dialogs dialogsPage={props.state.dialogsPage} dispatch={props.dispatch} />} />
         <Route path='/friends' render={() => <Friends />} />
         <Route path='/groups' render={() => <Groups />} />
         <Route path='/news' render={() => <News />} />

@@ -2,6 +2,19 @@ import React from 'react';
 import Style from './Posts.module.css';
 import Post from './Post/Post';
 
+let addPostActionCreater = () => {
+    return {
+        type: 'ADD-POST'
+    }
+};
+
+let updateNewPostTextActionCreater = (text) => {
+    return {
+        type: 'UPDATE-NEW-POST-TEXT',
+        newText: text
+    }
+};
+
 const Posts = (props) => {
     let postElements = props.postDate.map(el => {
         return <Post message={el.message} />
@@ -10,14 +23,13 @@ const Posts = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = (e) => {
-        const action = { type: 'ADD-POST' };
-        props.dispatch(action);
+        props.dispatch(addPostActionCreater());
         e.preventDefault();
     };
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        const action = { type: 'UPDATE-NEW-POST-TEXT', newText: text };
+        const action = updateNewPostTextActionCreater(text);
         props.dispatch(action);
     };
 
@@ -25,8 +37,8 @@ const Posts = (props) => {
         <div className={Style.root}>
             <h1 className={Style.title}>Мои записи</h1>
             <form action="" className={Style.form}>
-                <textarea onChange={ onPostChange } value={props.newPostText} ref={newPostElement} className={Style.input} placeholder="ваша лѣтопись..."></textarea>
-                <button onClick={ addPost } className={Style.submit}>Высѣчь ​рꙋны​</button>
+                <textarea onChange={onPostChange} value={props.newPostText} ref={newPostElement} className={Style.input} placeholder="ваша лѣтопись..."></textarea>
+                <button onClick={addPost} className={Style.submit}>Высѣчь ​рꙋны​</button>
             </form>
             <ul className={Style.list}>
                 {postElements}
