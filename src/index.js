@@ -7,10 +7,12 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './state';
 import * as serviceWorker from './serviceWorker';
 
+//Функция рендера страницы
 let renderEntireTree = () => {
     ReactDOM.render(
+        //BrowserRouter - обертка для использования компонента Route
         <BrowserRouter>
-            <App state={store.getState()} addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)} />
+            <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
         </BrowserRouter>
         , document.getElementById('root') 
     ); 
@@ -18,6 +20,7 @@ let renderEntireTree = () => {
 
 renderEntireTree();
 
+//Отправка объекту store функции рендера страницы - renderEntireTree
 store.subscribe(renderEntireTree);
 
 serviceWorker.unregister();

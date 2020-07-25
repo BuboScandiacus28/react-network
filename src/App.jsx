@@ -10,7 +10,7 @@ const App = (props) => {
         
         <Header />
 
-        <Main state={props.state} addPost={props.addPost} updateNewPostText={props.updateNewPostText} />
+        <Main state={props.state} dispatch={props.dispatch} />
 
         <Sprite/>
 

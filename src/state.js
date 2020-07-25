@@ -1,4 +1,5 @@
 let store = {
+    //Объект для хранения всех пользовательских данных (недо БД)
     _state: {
         profilePage: {
             profileInfoDate: [
@@ -119,28 +120,43 @@ let store = {
             ], 
         },   
     },
-    getState() {
-        return this._state;
-    },
+    //_updatePage - метод в который будет записыватся функция перерендеринга страницы 
     _updatePage() {
 
     },
-    addPost() {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText
-        };
-        this._state.profilePage.postDate.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._updatePage();
+    //getState - метод выдачи объекта _state  
+    getState() {
+        return this._state;
     },
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._updatePage();
-    },
+    //subscribe - метод для записи в метод _updatePage функции из параметра observer 
     subscribe(observer) {
         this._updatePage = observer;
     },
+    //dispatch - метод хранящий в себе все действия обращающиеся к БД
+    //---action - параметр передающий объект, который обязательно хранит тип вызываемого действия (свойство type) и, дополнительно,
+    //параметры нужные для работы того или иного действия
+    //Например: action {
+    //  type: 'НАЗВАНИЕ-ДЕЙСТВИЯ',
+    //  дополнительные_свойтсва: ...
+    //  ...    
+    //}  
+    dispatch(action) {
+        //Действие добавления нового поста на стену и в объект _state
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText
+            };
+            this._state.profilePage.postDate.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._updatePage();
+        } //Действие посимвольного обновления информации в объекте _state (свойство newPostText) исходя из информации в форме
+        else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._updatePage();
+        }
+    },
+    
 }
 
 export default store;
