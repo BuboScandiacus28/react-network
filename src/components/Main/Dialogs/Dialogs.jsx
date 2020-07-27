@@ -25,15 +25,13 @@ const Dialogs = (props) => {
     return <Message user={el.user} message={el.message} />
   });
 
-  let newMessageElement = React.createRef();
-
   let addMessage = () => {
     if (props.dialogsPage.newMessageText === '') return false;
     props.dispatch(addMessageActionCreater());
   };
 
-  let onMessageChange = () => {
-    let text = newMessageElement.current.value;
+  let onMessageChange = (e) => {
+    let text = e.target.value;
     const action = updateNewMessageTextActionCreater(text);
     props.dispatch(action);
   };
@@ -57,7 +55,7 @@ const Dialogs = (props) => {
         </div>
         <form className={Style.send_message_form}>
           <div className={Style.send_message_form_wrapper}>
-            <textarea onChange={onMessageChange} value={props.dialogsPage.newMessageText} ref={newMessageElement} className={Style.message_input} placeholder="Вырѣзать посланїѥ... "></textarea>
+            <textarea onChange={onMessageChange} value={props.dialogsPage.newMessageText} className={Style.message_input} placeholder="Вырѣзать посланїѥ... "></textarea>
             <a href="#scroll" onClick={addMessage} className={Style.btn_send_message_container}>
               <div className={Style.btn_send_message}></div>
             </a>

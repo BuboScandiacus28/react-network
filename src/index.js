@@ -4,7 +4,7 @@ import './index.css';
 import './fonts.css';
 import App from './App.jsx';
 import { BrowserRouter } from 'react-router-dom';
-import store from './state';
+import store from './redux/redux-store';
 import * as serviceWorker from './serviceWorker';
 
 //Функция рендера страницы

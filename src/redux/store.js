@@ -1,3 +1,7 @@
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import navMenuItemReducer from "./navMenuItem-reducer";
+
 let store = {
     //Объект для хранения всех пользовательских данных (недо БД)
     _state: {
@@ -127,33 +131,14 @@ let store = {
     //  ...    
     //}  
     dispatch(action) {
-        //Действие добавления нового поста на стену и в объект _state
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText
-            };
-            this._state.profilePage.postDate.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._updatePage();
-        } //Действие посимвольного обновления информации в объекте _state (свойство newPostText) исходя из информации в форме
-        else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText;
-            this._updatePage();
-        } //Действие добавления нового сообщения на форму диалога и в объект _state
-        else if (action.type === 'ADD-MESSAGE') {
-          let newMessage = {
-            user: "Ꙗ",
-            message: this._state.dialogsPage.newMessageText
-          };
-          this._state.dialogsPage.messageDate.push(newMessage);
-          this._state.dialogsPage.newMessageText = '';
-          this._updatePage();
-        } //Действие посимвольного обновления информации в объекте _state (свойство newMessageText) исходя из информации в форме
-        else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
-            this._state.dialogsPage.newMessageText = action.newText;
-            this._updatePage();
-        }
+      //Вызов функции редюсера для страницы Profile
+      this._state.profilePage = profileReducer(this._state.profilePage, action);  
+      //Вызов функции редюсера для страницы Dialogs
+      this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+      //Вызов функции редюсера для элемента NavMenu
+      this._state.navMenuItemDate = navMenuItemReducer(this._state.navMenuItemDate, '');
+      //Перерендеринг страницы с новым store
+      this._updatePage();
     },
     
 }
