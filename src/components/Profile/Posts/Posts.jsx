@@ -2,33 +2,19 @@ import React from 'react';
 import Style from './Posts.module.css';
 import Post from './Post/Post';
 
-let addPostActionCreater = () => {
-    return {
-        type: 'ADD-POST'
-    }
-};
-
-let updateNewPostTextActionCreater = (text) => {
-    return {
-        type: 'UPDATE-NEW-POST-TEXT',
-        newText: text
-    }
-};
-
 const Posts = (props) => {
+    
     let postElements = props.postDate.map(el => {
         return <Post message={el.message} />
     });
 
     let addPost = (e) => {
-        props.dispatch(addPostActionCreater());
-        e.preventDefault();
+        props.addPostContainer(e);
     };
 
     let onPostChange = (e) => {
         let text = e.target.value;
-        const action = updateNewPostTextActionCreater(text);
-        props.dispatch(action);
+        props.onPostChangeContainer(text);
     };
 
     return (

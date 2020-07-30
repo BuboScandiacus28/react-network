@@ -3,37 +3,22 @@ import Style from './Dialogs.module.css';
 import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
 
-let addMessageActionCreater = () => {
-  return {
-      type: 'ADD-MESSAGE'
-  }
-};
-
-let updateNewMessageTextActionCreater = (text) => {
-  return {
-      type: 'UPDATE-NEW-MESSAGE-TEXT',
-      newText: text
-  }
-};
-
 const Dialogs = (props) => {
-  let dialogElements = props.dialogsPage.dialogDate.map(el => {
+  let dialogElements = props.dialogDate.map(el => {
     return <Dialog userId={el.userId} title={el.title} />
   });
 
-  let messageElements = props.dialogsPage.messageDate.map(el => {
+  let messageElements = props.messageDate.map(el => {
     return <Message user={el.user} message={el.message} />
   });
 
   let addMessage = () => {
-    if (props.dialogsPage.newMessageText === '') return false;
-    props.dispatch(addMessageActionCreater());
+    props.addMessageContainer();
   };
 
   let onMessageChange = (e) => {
     let text = e.target.value;
-    const action = updateNewMessageTextActionCreater(text);
-    props.dispatch(action);
+    props.onMessageChangeContainer(text);
   };
 
   return (
@@ -55,7 +40,7 @@ const Dialogs = (props) => {
         </div>
         <form className={Style.send_message_form}>
           <div className={Style.send_message_form_wrapper}>
-            <textarea onChange={onMessageChange} value={props.dialogsPage.newMessageText} className={Style.message_input} placeholder="Вырѣзать посланїѥ... "></textarea>
+            <textarea onChange={onMessageChange} value={props.newMessageText} className={Style.message_input} placeholder="Вырѣзать посланїѥ... "></textarea>
             <a href="#scroll" onClick={addMessage} className={Style.btn_send_message_container}>
               <div className={Style.btn_send_message}></div>
             </a>
@@ -66,6 +51,6 @@ const Dialogs = (props) => {
     </div>
 
   );
-}
+};
 
 export default Dialogs;

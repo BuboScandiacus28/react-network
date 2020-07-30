@@ -1,17 +1,17 @@
 import React from 'react';
 import Style from './Profile.module.css';
-import Posts from './Posts/Posts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
+import PostsContainer from './Posts/PostsContainer';
 
 const Profile = (props) => {
-    let profileInfoElements = props.profilePage.profileInfoDate.map(el => {
+    let profileInfoElements = props.profileInfoDate.map(el => {
         return <ProfileInfo name={el.name} birthday={el.birthday} city={el.city} education={el.education} webCite={el.webCite} />
     });
     
     return (
         <div className={Style.root}>
             {profileInfoElements}
-            <Posts postDate={props.profilePage.postDate} newPostText={props.profilePage.newPostText} dispatch={props.dispatch} />
+            <PostsContainer store={props.store} />
         </div>
     );
 }
