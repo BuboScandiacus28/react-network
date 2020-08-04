@@ -11,7 +11,7 @@ const Profile = (props) => {
     return (
         <div className={Style.root}>
             {profileInfoElements}
-            <PostsContainer store={props.store} />
+            <PostsContainer />
         </div>
     );
 }

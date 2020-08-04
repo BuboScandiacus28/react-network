@@ -45,12 +45,21 @@ let initialState = {
         },
     ], 
     newMessageText: ''
-}
+};
+
+const ADD_MESSAGE = 'ADD-MESSAGE';
+
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
+export const addMessageActionCreater = () => ({type: ADD_MESSAGE});
+
+export const updateNewMessageTextActionCreater = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: text});
 
 const dialogsReducer = (state = initialState, action) => {
     switch(action.type) {
         //Действие добавления нового сообщения на форму диалога и в объект _state
-        case 'ADD-MESSAGE':
+        case ADD_MESSAGE:
+            if (state.newMessageText === '') return state;
             let newMessage = {
                 user: "Ꙗ",
                 message: state.newMessageText
@@ -59,7 +68,7 @@ const dialogsReducer = (state = initialState, action) => {
             state.newMessageText = '';
             return state;
         //Действие посимвольного обновления информации в объекте _state (свойство newMessageText) исходя из информации в форме
-        case 'UPDATE-NEW-MESSAGE-TEXT':
+        case UPDATE_NEW_MESSAGE_TEXT:
             state.newMessageText = action.newText;
             return state;
         default: 

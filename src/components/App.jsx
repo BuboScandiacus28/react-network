@@ -2,20 +2,21 @@ import React from 'react';
 import Style from './App.module.css';
 import Sprite from './sprite';
 import Header from './Header/Header';
-import NavMenu from './NavMenu/NavMenu';
 import ProfileContainer from './Profile/ProfileContainer';
 import DialogsContainer from './Dialogs/DialogsContainer';
+import NavMenuContainer from './NavMenu/NavMenuContainer';
 import Friends from './Friends/Friends';
 import Groups from './Groups/Groups';
 import News from './News/News';
 import Photos from './Photos/Photos';
 import Setings from './Setings/Setings';
 import Musics from './Musics/Musics';
-import { Route } from 'react-router-dom';
+import {Route} from 'react-router-dom';
 
 
 
-const App = (props) => {
+
+const App = () => {
   return (
     <div className="App">
 
@@ -23,14 +24,14 @@ const App = (props) => {
 
       <main className={Style.root}>
 
-        <NavMenu navMenuItemDate={props.state.navMenuItemDate} />
+        <NavMenuContainer />
 
         <div className={Style.line}></div>
 
-        <div class={Style.user_page}>
+        <div className={Style.user_page}>
 
-          <Route path='/profile' render={() => <ProfileContainer store={props.store} />} />
-          <Route path='/dialogs' render={() => <DialogsContainer store={props.store} />} />
+          <Route path='/profile' render={() => <ProfileContainer />} />
+          <Route path='/dialogs' render={() => <DialogsContainer />} />
           <Route path='/friends' render={() => <Friends />} />
           <Route path='/groups' render={() => <Groups />} />
           <Route path='/news' render={() => <News />} />
@@ -46,6 +47,6 @@ const App = (props) => {
 
     </div>
   );
-}
+};
 
 export default App;

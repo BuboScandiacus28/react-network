@@ -1,12 +1,11 @@
 import React from 'react';
 import Profile from './Profile';
+import {connect} from 'react-redux';
 
+let mapStateToProps = (state) => ({
+    profileInfoDate: state.profilePage.profileInfoDate
+});
 
-const ProfileContainer = (props) => {
-    let state = props.store.getState();
-    return (
-        <Profile store={props.store} profileInfoDate={state.profilePage.profileInfoDate}/>
-    );
-}
+const ProfileContainer = connect(mapStateToProps)(Profile);
 
 export default ProfileContainer;

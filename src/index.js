@@ -6,13 +6,16 @@ import App from './components/App.jsx';
 import {BrowserRouter} from 'react-router-dom';
 import store from './redux/redux-store';
 import * as serviceWorker from './serviceWorker';
+import {Provider} from 'react-redux';
 
 //Функция рендера страницы
 let renderEntireTree = () => {
     ReactDOM.render(
         //BrowserRouter - обертка для использования компонента Route
         <BrowserRouter>
-            <App state={store.getState()} dispatch={store.dispatch.bind(store)} store={store}/>
+            <Provider store = {store}>
+                <App />
+            </Provider>
         </BrowserRouter>
         , document.getElementById('root')
     ); 
@@ -20,6 +23,6 @@ let renderEntireTree = () => {
 renderEntireTree();
 
 //Отправка объекту store функции рендера страницы - renderEntireTree
-store.subscribe(renderEntireTree);
+store.subscribe(() => {renderEntireTree();});
 
 serviceWorker.unregister();
