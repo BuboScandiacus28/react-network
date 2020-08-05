@@ -19,14 +19,13 @@
         "babel"
     ],
     "rules": {
-        "no-unused-vars": ["error", { "caughtErrorsIgnorePattern": "^ignore" }],
-    	"react/jsx-uses-react": 1,
-        "react/jsx-uses-vars": "error",
-
         "linebreak-style": [
             "error",
             "unix"
         ],
+        "no-unused-vars": ["error", { "caughtErrorsIgnorePattern": "^ignore" }],
+    	"react/jsx-uses-react": 1,
+        "react/jsx-uses-vars": "error",
         "babel/new-cap": 1,
         "babel/camelcase": 1,
         "babel/no-invalid-this": 1,

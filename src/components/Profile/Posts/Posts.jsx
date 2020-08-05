@@ -5,7 +5,7 @@ import Post from './Post/Post';
 const Posts = (props) => {
     
     let postElements = props.postDate.map(el => {
-        return <Post message={el.message} />
+        return (<Post message={el.message} />);
     });
 
     let addPost = (e) => {
@@ -30,6 +30,6 @@ const Posts = (props) => {
 
         </div>
     );
-}
+};
 
 export default Posts;

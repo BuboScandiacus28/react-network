@@ -29,20 +29,28 @@ export const addPostActionCreater = () => ({type: ADD_POST});
 export const updateNewPostTextActionCreater = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
 
 const profileReducer = (state = initialState, action) => {
+    let stateCopy;
     switch(action.type) {
         //Действие добавления нового поста на стену и в объект _state
-        case ADD_POST:
+        case ADD_POST: {
             let newPost = {
                 id: 5,
                 message: state.newPostText
             };
-            state.postDate.push(newPost);
-            state.newPostText = '';
-            return state;
+            stateCopy = {
+                ...state,
+                postDate: [...state.postDate, newPost],
+                newPostText: ''
+            };
+            return stateCopy;
+        }
         //Действие посимвольного обновления информации в объекте _state (свойство newPostText) исходя из информации в форме
-        case UPDATE_NEW_POST_TEXT: 
-            state.newPostText = action.newText;
-            return state;
+        case UPDATE_NEW_POST_TEXT:
+            stateCopy = {
+                ...state,
+                newPostText: action.newText
+            };
+            return stateCopy;
         default: 
             return state;
     }  

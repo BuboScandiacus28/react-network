@@ -8,6 +8,6 @@ const Post = (props) => {
             <h2 className={Style.text}>{props.message}</h2>
         </li>
     );
-}
+};
 
 export default Post;

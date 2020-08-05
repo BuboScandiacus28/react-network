@@ -16,6 +16,6 @@ const Header = () => {
             <div className={Style.line}></div>
         </header>
     );
-}
+};
 
 export default Header;

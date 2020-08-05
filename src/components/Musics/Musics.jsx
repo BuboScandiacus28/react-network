@@ -7,6 +7,6 @@ const Musics = () => {
       Musics
     </div>
   );
-}
+};
 
 export default Musics;

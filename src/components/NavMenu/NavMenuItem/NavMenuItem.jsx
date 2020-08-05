@@ -1,6 +1,6 @@
 import React from 'react';
 import Style from './NavMenuItem.module.css';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const NavMenuItem = (props) => {
     return (
@@ -11,7 +11,7 @@ const NavMenuItem = (props) => {
     <NavLink to={props.href} className={Style.link}>{props.title}</NavLink>
       </li>
     );
-}
+};
 
 export default NavMenuItem;
 

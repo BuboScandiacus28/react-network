@@ -56,21 +56,30 @@ export const addMessageActionCreater = () => ({type: ADD_MESSAGE});
 export const updateNewMessageTextActionCreater = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: text});
 
 const dialogsReducer = (state = initialState, action) => {
+    let stateCopy;
+  
     switch(action.type) {
         //Действие добавления нового сообщения на форму диалога и в объект _state
-        case ADD_MESSAGE:
-            if (state.newMessageText === '') return state;
-            let newMessage = {
-                user: "Ꙗ",
-                message: state.newMessageText
-            };
-            state.messageDate.push(newMessage);
-            state.newMessageText = '';
-            return state;
+        case ADD_MESSAGE: {
+          if (state.newMessageText === '') return state; 
+          let newMessage = {
+              user: "Ꙗ",
+              message: state.newMessageText
+          };
+          stateCopy = {
+            ...state,
+            messageDate: [...state.messageDate, newMessage],
+            newMessageText: ''
+          };
+          return stateCopy;
+        }
         //Действие посимвольного обновления информации в объекте _state (свойство newMessageText) исходя из информации в форме
-        case UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.newText;
-            return state;
+        case UPDATE_NEW_MESSAGE_TEXT: 
+          stateCopy = {
+            ...state,
+            newMessageText: action.newText
+          };
+          return stateCopy;
         default: 
             return state;
     }

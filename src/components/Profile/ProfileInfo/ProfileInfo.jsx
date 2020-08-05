@@ -1,6 +1,6 @@
 import React from 'react';
 import Style from './ProfileInfo.module.css';
-import profilePhoto from './cat.jpg'
+import profilePhoto from './cat.jpg';
 
 const ProfileInfo = (props) => {
     return (
@@ -19,6 +19,6 @@ const ProfileInfo = (props) => {
             </div>
         </div>
     );
-}
+};
 
 export default ProfileInfo;

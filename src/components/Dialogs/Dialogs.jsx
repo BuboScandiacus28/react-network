@@ -5,11 +5,11 @@ import Message from './Message/Message';
 
 const Dialogs = (props) => {
   let dialogElements = props.dialogDate.map(el => {
-    return <Dialog userId={el.userId} title={el.title} />
+    return (<Dialog userId={el.userId} title={el.title} />);
   });
 
   let messageElements = props.messageDate.map(el => {
-    return <Message user={el.user} message={el.message} />
+    return (<Message user={el.user} message={el.message} />);
   });
 
   let addMessage = () => {

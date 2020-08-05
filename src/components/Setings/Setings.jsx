@@ -7,6 +7,6 @@ const Setings = () => {
       Setings
     </div>
   );
-}
+};
 
 export default Setings;

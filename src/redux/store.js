@@ -141,7 +141,7 @@ let store = {
       this._updatePage();
     },
     
-}
+};
 
 export default store;
 

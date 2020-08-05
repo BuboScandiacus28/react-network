@@ -4,7 +4,7 @@ import NavMenuItem from './NavMenuItem/NavMenuItem';
 
 const NavMenu = (props) => {
   let navMenuItemElements = props.navMenuItemDate.map(el => {
-    return <NavMenuItem href={el.href} iconId={el.iconId} title={el.title} />
+    return (<NavMenuItem href={el.href} iconId={el.iconId} title={el.title} />);
   });
   
   return (
@@ -16,7 +16,7 @@ const NavMenu = (props) => {
       </nav>
     </aside>
   );
-}
+};
 
 export default NavMenu;
 

@@ -34,6 +34,6 @@ const Sprite = () => {
             </defs>
         </svg>
     );
-}
+};
 
 export default Sprite;
