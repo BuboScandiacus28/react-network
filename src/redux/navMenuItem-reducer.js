@@ -12,9 +12,9 @@ let initialState = [
           iconId: "laguz",
           title: "Соѻбщенїꙗ"
         }, {
-          href: "/friends",
+          href: "/users",
           iconId: "mannaz",
-          title: "Дрꙋзьꙗ"
+          title: "Пользователи"
         }, {
           href: "/groups",
           iconId: "nauthiz",

@@ -5,7 +5,7 @@ import Header from './Header/Header';
 import ProfileContainer from './Profile/ProfileContainer';
 import DialogsContainer from './Dialogs/DialogsContainer';
 import NavMenuContainer from './NavMenu/NavMenuContainer';
-import Friends from './Friends/Friends';
+import UsersContainer from './Users/UsersContainer';
 import Groups from './Groups/Groups';
 import News from './News/News';
 import Photos from './Photos/Photos';
@@ -32,7 +32,7 @@ const App = () => {
 
           <Route path='/profile' render={() => <ProfileContainer />} />
           <Route path='/dialogs' render={() => <DialogsContainer />} />
-          <Route path='/friends' render={() => <Friends />} />
+          <Route path='/users' render={() => <UsersContainer />} />
           <Route path='/groups' render={() => <Groups />} />
           <Route path='/news' render={() => <News />} />
           <Route path='/photos' render={() => <Photos />} />

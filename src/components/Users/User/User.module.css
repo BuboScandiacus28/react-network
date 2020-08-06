@@ -1,0 +1,78 @@
+.root {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 4rem auto;
+}
+
+.left_col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile_photo_container {
+    width: 9rem;
+    height: 9rem;
+
+    border: 2px solid #ba7338;
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile_photo_container img {
+    width: 125%;
+}
+
+.follow {
+    border: 1px solid #ba7338;
+
+    color: #ba7338;
+    background-color: #d5b08d;
+
+    padding: 0.5rem 1.5rem;
+    margin-top: 1rem;
+
+    align-self: stretch;
+
+    text-align: center;
+
+    font-size: 1.2rem;
+}
+
+.right_col {
+    min-width: 50rem;
+
+    margin-left: 3rem;
+    padding: 1rem;
+
+    border: 2px solid #ba7338;
+    border-radius: 10px;
+
+    align-self: baseline;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.right_col > * {
+    flex-basis: 40%;
+    align-self: baseline;
+}
+
+.location {
+    text-align: right;
+}
+
+.status {
+    margin: 1rem 0 0 0;
+
+    font-size: 1.2rem;
+}

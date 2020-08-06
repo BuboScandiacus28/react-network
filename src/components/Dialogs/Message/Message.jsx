@@ -7,7 +7,7 @@ const Message = (props) => {
   const userDirection = (user) => {
     if (user == "Ꙗ" || user == "Я" || user == "Me") return Style.right;
     else return Style.left;
-  } 
+  };
 
   return (
     <li className={`${Style.root} ${userDirection(props.user)}`}>
@@ -18,6 +18,6 @@ const Message = (props) => {
       <p className={Style.text}>{props.message}</p>
     </li>
   );
-}
+};
 
 export default Message;
