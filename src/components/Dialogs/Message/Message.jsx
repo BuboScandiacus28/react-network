@@ -1,6 +1,6 @@
 import React from 'react';
 import Style from './Message.module.css';
-import smile from './Smile.png';
+import profilePhoto from './../../../img/Smile.png';
 
 const Message = (props) => {
 
@@ -12,7 +12,7 @@ const Message = (props) => {
   return (
     <li className={`${Style.root} ${userDirection(props.user)}`}>
       <div className={Style.icon_container}>
-        <img src={smile} alt={`Иконка пользователя ${props.user}`} className={Style.icon} />
+        <img src={profilePhoto} alt={`Иконка пользователя ${props.user}`} className={Style.icon} />
         <h1 className={Style.title}>{props.user}</h1>
       </div>
       <p className={Style.text}>{props.message}</p>

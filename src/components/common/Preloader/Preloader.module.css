@@ -1,0 +1,21 @@
+.loader {
+    background: none repeat scroll 0 0 #f5f7e8;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.loaderInner {
+    height: 120px;
+    width: 120px;
+    margin-top: -60px;
+    margin-left: -60px;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+}

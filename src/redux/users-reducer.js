@@ -4,7 +4,8 @@ let initialState = {
     ], 
     pageSize: 15,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false,
 };
 
 const FOLLOW = 'FOLLOW';
@@ -12,12 +13,14 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT'; 
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 
 export const followAC = (userId) => ({type: FOLLOW, userId});
 export const unfollowAC = (userId) => ({type: UNFOLLOW, userId});
 export const setUsersAC = (users) => ({type: SET_USERS, users});
 export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const setTotalUsersCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
+export const toggleIsFetchingAC = (isFetching) => ({type: TOGGLE_IS_FETCHING ,isFetching});
 
 const usersReducer = (state = initialState, action) => {
     let stateCopy;
@@ -58,10 +61,18 @@ const usersReducer = (state = initialState, action) => {
                 currentPage: action.currentPage
             };
             return stateCopy;
+        //Изменение общего количества пользователей соц. сети
         case SET_TOTAL_USERS_COUNT:
             stateCopy = {
                 ...state,
                 totalUsersCount: action.totalUsersCount
+            };
+            return stateCopy;
+        //Изменение состояния прелоадера
+        case TOGGLE_IS_FETCHING:
+            stateCopy = {
+                ...state,
+                isFetching: action.isFetching
             };
             return stateCopy;
         default: 

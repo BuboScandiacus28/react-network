@@ -1,6 +1,6 @@
 import React from 'react';
 import Style from './User.module.css';
-import userPhoto from './Smile.png';
+import userPhoto from './../../../img/Smile.png';
 
 const User = (props) => {
   let checkFollow = (check) => {
