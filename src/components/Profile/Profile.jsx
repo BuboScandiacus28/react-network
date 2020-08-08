@@ -2,15 +2,13 @@ import React from 'react';
 import Style from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import PostsContainer from './Posts/PostsContainer';
+import Preloader from '../common/Preloader/Preloader';
 
 const Profile = (props) => {
-    let profileInfoElements = props.profileInfoDate.map(el => {
-        return (<ProfileInfo name={el.name} birthday={el.birthday} city={el.city} education={el.education} webCite={el.webCite} />);
-    });
-    
+    if (!props.profile) return (<Preloader />);
     return (
         <div className={Style.root}>
-            {profileInfoElements}
+            <ProfileInfo  profilePhoto={props.profile.photos.large} fullName={props.profile.fullName} aboutMe={props.profile.aboutMe} contacts={props.profile.contacts}/>
             <PostsContainer />
         </div>
     );

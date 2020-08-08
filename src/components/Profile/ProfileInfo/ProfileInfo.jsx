@@ -1,20 +1,33 @@
 import React from 'react';
 import Style from './ProfileInfo.module.css';
-import profilePhoto from './../../../img/cat.jpg';
+import userPhoto from './../../../img/cat.jpg';
 
 const ProfileInfo = (props) => {
+    let contactsListElement = (props) => {
+        return props != null && props != "" ? <a href={props}>{props}</a> : "Информация отсутствует";
+    };
+    
     return (
         <div className={Style.root}>
             <div className={Style.information}>
                 <div className={Style.photo_container}>
-                    <img src={profilePhoto} alt="Фото профиля - кошка" className={Style.photo} />
+                    <img src={props.profilePhoto != null ? props.profilePhoto : userPhoto} alt="Фото профиля" className={Style.photo} />
                 </div>
                 <div className={Style.description_container}>
-                    <h1 className={Style.name}>{props.name}</h1>
-                    <h2 className={Style.birthday}>Дата рожденїꙗ: {props.birthday}</h2>
-                    <h2 className={Style.city}>Городъ: {props.city}</h2>
-                    <h2 className={Style.education}>Ѻбразованїѥ: {props.education}</h2>
-                    <h2 className={Style.web_cite}>​Вебъ​ сайтъ: <a href={props.webCite}>{props.webCite}</a></h2>
+                    <h1 className={Style.name}>{props.fullName}</h1>
+                    <h2 className={Style.status}>Статус: {props.aboutMe != null ? props.aboutMe : "Информация отсутствует"}</h2>
+                    <ul className={Style.contacts_list}>
+                        <h2 className={Style.contacts_list_title}>Контакты</h2>
+                        <li className={Style.contacts_list_items}><h2>facebook:</h2> {contactsListElement(props.contacts.facebook)}</li>
+                        <li className={Style.contacts_list_items}><h2>website:</h2> {contactsListElement(props.contacts.website)}</li>
+                        <li className={Style.contacts_list_items}><h2>vk:</h2> {contactsListElement(props.contacts.vk)}</li>
+                        <li className={Style.contacts_list_items}><h2>twitter:</h2> {contactsListElement(props.contacts.twitter)}</li>
+                        <li className={Style.contacts_list_items}><h2>instagram:</h2> {contactsListElement(props.contacts.instagram)}</li>
+                        <li className={Style.contacts_list_items}><h2>youtube:</h2> {contactsListElement(props.contacts.youtube)}</li>
+                        <li className={Style.contacts_list_items}><h2>github:</h2> {contactsListElement(props.contacts.github)}</li>
+                        <li className={Style.contacts_list_items}><h2>mainLink:</h2> {contactsListElement(props.contacts.mainLink)}</li>
+                    </ul>
+
                 </div>
             </div>
         </div>

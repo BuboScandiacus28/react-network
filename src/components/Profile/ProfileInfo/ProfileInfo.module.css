@@ -5,7 +5,9 @@
 
 .photo_container {
     width: 20rem;
-    height: 22rem;
+    height: 20rem;
+
+    overflow: hidden;
 
     border: 1px solid #ba7338;
     border-radius: 5px;
@@ -28,8 +30,21 @@
     margin-bottom: 3rem;
 }
 
-.description_container h2 {
+.description_container > h2 {
     font-size: 1.5rem;
 
     margin-top: 0.5rem;
+}
+
+.contacts_list_items {
+    font-size: 1.2rem;
+
+    margin-top: 0.3rem;
+    margin-left: 0.3rem;
+}
+
+.contacts_list_items h2 {
+    font-size: 1.2rem;
+    
+    display: inline;
 }

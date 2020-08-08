@@ -30,7 +30,7 @@ const App = () => {
 
         <div className={Style.user_page}>
 
-          <Route path='/profile' render={() => <ProfileContainer />} />
+          <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
           <Route path='/dialogs' render={() => <DialogsContainer />} />
           <Route path='/users' render={() => <UsersContainer />} />
           <Route path='/groups' render={() => <Groups />} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import Style from './User.module.css';
 import userPhoto from './../../../img/Smile.png';
+import {NavLink} from 'react-router-dom';
 
 const User = (props) => {
   let checkFollow = (check) => {
@@ -10,9 +11,9 @@ const User = (props) => {
   return (
     <div className={Style.root}>
       <div className={Style.left_col}>
-        <div className={Style.profile_photo_container}>
+        <NavLink to={`/profile/${props.userId}`} className={Style.profile_photo_container}>
           <img src={props.photoUrl != null ? props.photoUrl : userPhoto} alt="Фото пользователя"/>
-        </div>
+        </NavLink>
         <div onClick={() => props.followEvent(props.userId)} className={Style.follow}>{checkFollow(props.followed)}</div>
       </div>
       <div className={Style.right_col}>

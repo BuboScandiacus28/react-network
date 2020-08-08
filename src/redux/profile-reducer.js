@@ -1,13 +1,5 @@
 let initialState = {
-    profileInfoDate: [
-        {
-            name:"Алексѣй ​Короленко​",
-            birthday:"29 февралѧ 1988 г.",
-            city:"Кыѥвъ",
-            education:"Информацїꙗ ѻтсꙋтствꙋѥтъ",
-            webCite:"https://buboscandiacus28.github.io"
-        },
-    ], 
+    profile: null,
     postDate: [
         {
             message: "Нꙋ гдѣ же ​всѣ​ славѧне?"
@@ -21,12 +13,12 @@ let initialState = {
 };
 
 const ADD_POST = 'ADD-POST';
-
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 export const addPost = () => ({type: ADD_POST});
-
 export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, text});
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 
 const profileReducer = (state = initialState, action) => {
     let stateCopy;
@@ -48,6 +40,13 @@ const profileReducer = (state = initialState, action) => {
             stateCopy = {
                 ...state,
                 newPostText: action.text
+            };
+            return stateCopy;
+        //
+        case SET_USER_PROFILE:
+            stateCopy = {
+                ...state,
+                profile: action.profile
             };
             return stateCopy;
         default: 
