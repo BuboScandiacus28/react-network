@@ -13,12 +13,12 @@ const Dialogs = (props) => {
   });
 
   let addMessage = () => {
-    props.addMessageContainer();
+    props.addMessage();
   };
 
-  let onMessageChange = (e) => {
+  let updateNewMessageText = (e) => {
     let text = e.target.value;
-    props.onMessageChangeContainer(text);
+    props.updateNewMessageText(text);
   };
 
   return (
@@ -40,7 +40,7 @@ const Dialogs = (props) => {
         </div>
         <form className={Style.send_message_form}>
           <div className={Style.send_message_form_wrapper}>
-            <textarea onChange={onMessageChange} value={props.newMessageText} className={Style.message_input} placeholder="Вырѣзать посланїѥ... "></textarea>
+            <textarea onChange={updateNewMessageText} value={props.newMessageText} className={Style.message_input} placeholder="Вырѣзать посланїѥ... "></textarea>
             <a href="#scroll" onClick={addMessage} className={Style.btn_send_message_container}>
               <div className={Style.btn_send_message}></div>
             </a>

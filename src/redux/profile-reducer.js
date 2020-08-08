@@ -24,9 +24,9 @@ const ADD_POST = 'ADD-POST';
 
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-export const addPostActionCreater = () => ({type: ADD_POST});
+export const addPost = () => ({type: ADD_POST});
 
-export const updateNewPostTextActionCreater = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
+export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, text});
 
 const profileReducer = (state = initialState, action) => {
     let stateCopy;
@@ -34,7 +34,6 @@ const profileReducer = (state = initialState, action) => {
         //Действие добавления нового поста на стену и в объект _state
         case ADD_POST: {
             let newPost = {
-                id: 5,
                 message: state.newPostText
             };
             stateCopy = {
@@ -48,7 +47,7 @@ const profileReducer = (state = initialState, action) => {
         case UPDATE_NEW_POST_TEXT:
             stateCopy = {
                 ...state,
-                newPostText: action.newText
+                newPostText: action.text
             };
             return stateCopy;
         default: 

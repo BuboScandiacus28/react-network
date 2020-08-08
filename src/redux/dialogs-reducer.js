@@ -51,9 +51,9 @@ const ADD_MESSAGE = 'ADD-MESSAGE';
 
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
-export const addMessageActionCreater = () => ({type: ADD_MESSAGE});
+export const addMessage = () => ({type: ADD_MESSAGE});
 
-export const updateNewMessageTextActionCreater = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: text});
+export const updateNewMessageText = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: text});
 
 const dialogsReducer = (state = initialState, action) => {
     let stateCopy;
