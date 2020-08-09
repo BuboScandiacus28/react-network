@@ -1,7 +1,7 @@
 import React from 'react';
 import Style from './App.module.css';
 import Sprite from './sprite';
-import Header from './Header/Header';
+import HeaderContainer from './Header/HeaderContainer';
 import ProfileContainer from './Profile/ProfileContainer';
 import DialogsContainer from './Dialogs/DialogsContainer';
 import NavMenuContainer from './NavMenu/NavMenuContainer';
@@ -20,7 +20,7 @@ const App = () => {
   return (
     <div className="App">
 
-      <Header />
+      <HeaderContainer />
 
       <main className={Style.root}>
 

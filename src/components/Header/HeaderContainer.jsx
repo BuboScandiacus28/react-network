@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Header from './Header';
 import * as axios from 'axios';
-import {setAuthUserData} from './../../redux/auth-reducer.js';
+import {setAuthUserData, toggleIsAuth} from './../../redux/auth-reducer.js';
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
@@ -12,11 +12,15 @@ class HeaderContainer extends React.Component {
             if (response.data.resultCode === 0) {
                 let {id, email, login} = response.data.data;
                 this.props.setAuthUserData(id, email, login);
+                this.props.toggleIsAuth(true);
+            } else {
+                this.props.toggleIsAuth(false);
             }
         });
     }
 
     render() {
+        this.componentDidMount();
         return (
             <Header {...this.props} />
         );
@@ -31,5 +35,5 @@ let mapToStateProps = (state) => {
 };
 
 export default connect(mapToStateProps, {
-    setAuthUserData
+    setAuthUserData, toggleIsAuth
 })(HeaderContainer);

@@ -30,7 +30,7 @@ let Users = (props) => {
                   <User userId={el.id}
                   photoUrl={el.photos.small} 
                   followed={el.followed} 
-                  followEvent={props.checkFollowEvent(el.followed)} 
+                  followEvent={props.checkFollowEvent} 
                   name={el.name} 
                   status={el.status} 
                   city={"el.location.city"} 
