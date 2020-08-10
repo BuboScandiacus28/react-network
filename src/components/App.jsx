@@ -12,6 +12,7 @@ import Photos from './Photos/Photos';
 import Setings from './Setings/Setings';
 import Musics from './Musics/Musics';
 import {Route} from 'react-router-dom';
+import Login from './Login/Login';
 
 
 
@@ -38,6 +39,7 @@ const App = () => {
           <Route path='/photos' render={() => <Photos />} />
           <Route path='/setings' render={() => <Setings />} />
           <Route path='/musics' render={() => <Musics />} />
+          <Route path='/login' render={() => <Login />} />
 
         </div>
 

@@ -34,7 +34,8 @@ let Users = (props) => {
                   name={el.name} 
                   status={el.status} 
                   city={"el.location.city"} 
-                  country={"el.location.country"} />
+                  country={"el.location.country"} 
+                  followingInProgress={props.followingInProgress}/>
                );
       })}
       <div className={Style.usersNav}>

@@ -14,7 +14,7 @@ const User = (props) => {
         <NavLink to={`/profile/${props.userId}`} className={Style.profile_photo_container}>
           <img src={props.photoUrl != null ? props.photoUrl : userPhoto} alt="Фото пользователя"/>
         </NavLink>
-        <div onClick={() => props.followEvent(props.followed, props.userId)} className={Style.follow}>{checkFollow(props.followed)}</div>
+        <button disabled={props.followingInProgress.some(id => id === props.userId)} onClick={() => props.followEvent(props.followed, props.userId)} className={Style.follow}>{checkFollow(props.followed)}</button>
       </div>
       <div className={Style.right_col}>
         <h2 className={Style.full_name}>{props.name}</h2>

@@ -1,3 +1,5 @@
+import { profileAPI } from "../api/api";
+
 let initialState = {
     profile: null,
     postDate: [
@@ -19,6 +21,18 @@ const SET_USER_PROFILE = 'SET-USER-PROFILE';
 export const addPost = () => ({type: ADD_POST});
 export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, text});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
+
+export const getUserProfileTh = (userId, authorizationUserId) => {
+    return (dispatch) => {
+        let id = userId;
+        if (!id) id = authorizationUserId;
+        debugger;
+        profileAPI.getUserProfile(id).then(data => {
+            debugger;
+            dispatch(setUserProfile(data));
+        });
+    };
+};
 
 const profileReducer = (state = initialState, action) => {
     let stateCopy;

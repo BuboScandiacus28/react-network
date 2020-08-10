@@ -2,8 +2,11 @@ import React from 'react';
 import Style from './Dialogs.module.css';
 import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
+import {Redirect} from 'react-router-dom';
 
 const Dialogs = (props) => {
+  if (!props.isAuth) return <Redirect to={'/login'} />;
+  
   let dialogElements = props.dialogDate.map(el => {
     return (<Dialog userId={el.userId} title={el.title} />);
   });
