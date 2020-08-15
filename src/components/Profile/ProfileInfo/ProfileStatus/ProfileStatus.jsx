@@ -3,8 +3,11 @@ import Style from './ProfileStatus.module.css';
 
 class ProfileStatus extends React.Component {
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
+
+    statusInputRef = React.createRef();
 
     activateEditMode = () => {
         this.setState( {
@@ -16,7 +19,23 @@ class ProfileStatus extends React.Component {
     deactivateEditMode = () => {
         this.setState( {
             editMode: false,
-        } )
+        } );
+        this.props.updateStatusTh(this.state.status)
+    }
+
+    onStatusChange = (e) => {
+        this.setState( {
+            status: e.currentTarget.value,
+        } );
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            });
+        }
+        
     }
 
     render () {
@@ -24,11 +43,11 @@ class ProfileStatus extends React.Component {
             <div className={Style.root}>
                 {
                     !this.state.editMode &&
-                    <p onClick={this.activateEditMode} className={Style.status}>{this.props.aboutMe}</p>
+                    <p onClick={this.activateEditMode} className={Style.status}>{this.props.status}</p>
                 }
                 {
                     this.state.editMode &&
-                    <input autoFocus={true} onBlur={this.deactivateEditMode} value={this.props.aboutMe} type="text"/> 
+                    <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status} type="text"/> 
                 }
                 
                 

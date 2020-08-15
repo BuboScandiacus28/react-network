@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
                 </div>
                 <div className={Style.description_container}>
                     <h1 className={Style.name}>{props.fullName}</h1>
-                    <ProfileStatus aboutMe={props.aboutMe != null ? props.aboutMe : "Изменить статус"} />
+                    <ProfileStatus status={props.status != null ? props.status : "Изменить статус"} updateStatusTh={props.updateStatusTh}/>
                     <ul className={Style.contacts_list}>
                         <h2 className={Style.contacts_list_title}>Контакты</h2>
                         <li className={Style.contacts_list_items}><h2>facebook:</h2> {contactsListElement(props.contacts.facebook)}</li>

@@ -8,7 +8,7 @@ const Profile = (props) => {
     if (!props.profile) return (<Preloader />);
     return (
         <div className={Style.root}>
-            <ProfileInfo  profilePhoto={props.profile.photos.large} fullName={props.profile.fullName} aboutMe={props.profile.aboutMe} contacts={props.profile.contacts}/>
+            <ProfileInfo  profilePhoto={props.profile.photos.large} fullName={props.profile.fullName} status={props.status} contacts={props.profile.contacts} updateStatusTh={props.updateStatusTh}/>
             <PostsContainer />
         </div>
     );
