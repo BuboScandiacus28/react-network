@@ -26,9 +26,7 @@ export const getUserProfileTh = (userId, authorizationUserId) => {
     return (dispatch) => {
         let id = userId;
         if (!id) id = authorizationUserId;
-        debugger;
         profileAPI.getUserProfile(id).then(data => {
-            debugger;
             dispatch(setUserProfile(data));
         });
     };

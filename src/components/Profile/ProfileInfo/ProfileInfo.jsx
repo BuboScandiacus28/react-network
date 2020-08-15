@@ -1,6 +1,7 @@
 import React from 'react';
 import Style from './ProfileInfo.module.css';
 import userPhoto from './../../../img/cat.jpg';
+import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 const ProfileInfo = (props) => {
     let contactsListElement = (props) => {
@@ -15,7 +16,7 @@ const ProfileInfo = (props) => {
                 </div>
                 <div className={Style.description_container}>
                     <h1 className={Style.name}>{props.fullName}</h1>
-                    <h2 className={Style.status}>Статус: {props.aboutMe != null ? props.aboutMe : "Информация отсутствует"}</h2>
+                    <ProfileStatus aboutMe={props.aboutMe != null ? props.aboutMe : "Изменить статус"} />
                     <ul className={Style.contacts_list}>
                         <h2 className={Style.contacts_list_title}>Контакты</h2>
                         <li className={Style.contacts_list_items}><h2>facebook:</h2> {contactsListElement(props.contacts.facebook)}</li>
