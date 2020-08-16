@@ -1,4 +1,4 @@
-import {authMeAPI} from "../api/api";
+import {authAPI} from "../api/api";
 
 let initialState = {
     userId: null,
@@ -9,23 +9,44 @@ let initialState = {
 
 const SET_USER_DATA = 'SET-USER-DATA';
 
-export const setAuthUserData = (userId, email, login) => ({
+export const setAuthUserData = (userId, email, login, isAuth) => ({
     type: SET_USER_DATA,
     data: {
         userId,
         email,
         login
-    }
+    },
+    isAuth
 });
 
 //Thunks level
 
-export const authorizationTh = () => {
+export const getAuthUserTh = () => {
     return (dispatch) => {
-        authMeAPI.authorization().then(data => {
+        authAPI.me().then(data => {
             if (data.resultCode === 0) {
                 let {id, email, login} = data.data;
-                dispatch(setAuthUserData(id, email, login));
+                dispatch(setAuthUserData(id, email, login, true));
+            }
+        });
+    };
+};
+
+export const loginTh = (email, password, rememberMe) => {
+    return (dispatch) => {
+        authAPI.login(email, password, rememberMe).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(getAuthUserTh());
+            }
+        });
+    };
+};
+
+export const logoutTh = () => {
+    return (dispatch) => {
+        authAPI.logout().then(data => {
+            if (data.resultCode === 0) {
+                dispatch(setAuthUserData(null, null, null, false));
             }
         });
     };
@@ -39,7 +60,7 @@ const authReducer = (state = initialState, action) => {
             stateCopy = {
                 ...state,
                 ...action.data,
-                isAuth: true
+                isAuth: action.isAuth
             };
             return stateCopy;
         }

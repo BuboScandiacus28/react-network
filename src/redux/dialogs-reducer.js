@@ -44,16 +44,11 @@ let initialState = {
           message: "Во истинꙋ!"
         },
     ], 
-    newMessageText: ''
 };
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
 
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-
-export const addMessage = () => ({type: ADD_MESSAGE});
-
-export const updateNewMessageText = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: text});
+export const addMessage = (newMessageText) => ({type: ADD_MESSAGE, newMessageText});
 
 const dialogsReducer = (state = initialState, action) => {
     let stateCopy;
@@ -61,25 +56,13 @@ const dialogsReducer = (state = initialState, action) => {
     switch(action.type) {
         //Действие добавления нового сообщения на форму диалога и в объект _state
         case ADD_MESSAGE: {
-          if (state.newMessageText === '') return state; 
-          let newMessage = {
-              user: "Ꙗ",
-              message: state.newMessageText
-          };
           stateCopy = {
             ...state,
-            messageDate: [...state.messageDate, newMessage],
+            messageDate: [...state.messageDate, {user: "Ꙗ", message: action.newMessageText}],
             newMessageText: ''
           };
           return stateCopy;
         }
-        //Действие посимвольного обновления информации в объекте _state (свойство newMessageText) исходя из информации в форме
-        case UPDATE_NEW_MESSAGE_TEXT: 
-          stateCopy = {
-            ...state,
-            newMessageText: action.newText
-          };
-          return stateCopy;
         default: 
             return state;
     }

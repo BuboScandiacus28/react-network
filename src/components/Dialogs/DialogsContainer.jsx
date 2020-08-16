@@ -1,12 +1,11 @@
 import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
-import {addMessage, updateNewMessageText} from '../../redux/dialogs-reducer';
+import {addMessage} from '../../redux/dialogs-reducer';
 import {withAuthRedirect} from '../../hoc/withAuthRedirect';
-import { compose } from 'redux';
+import {compose} from 'redux';
 
 let mapStateToProps = (state) => {
   return {
-    newMessageText: state.dialogsPage.newMessageText,
     messageDate: state.dialogsPage.messageDate,
     dialogDate: state.dialogsPage.dialogDate
   };
@@ -14,7 +13,7 @@ let mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps, {
-    addMessage, updateNewMessageText
+    addMessage
   }), 
   withAuthRedirect
 )(Dialogs);
