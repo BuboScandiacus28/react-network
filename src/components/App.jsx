@@ -11,44 +11,65 @@ import News from './News/News';
 import Photos from './Photos/Photos';
 import Setings from './Setings/Setings';
 import Musics from './Musics/Musics';
-import {Route} from 'react-router-dom';
+import {Route, withRouter} from 'react-router-dom';
 import Login from './Login/Login';
+import {connect} from 'react-redux';
+import {initializedSuccessTh} from './../redux/app-reducer';
+import {compose} from 'redux';
+import Preloader from './common/Preloader/Preloader';
 
 
 
 
-const App = () => {
-  return (
-    <div className="App">
+class App extends React.Component {
+  componentDidMount() {
+    this.props.initializedSuccessTh();
+  }
 
-      <HeaderContainer />
+  render() {
+    if (!this.props.initialized) return <Preloader/>
 
-      <main className={Style.root}>
+    return (
+      <div className="App">
 
-        <NavMenuContainer />
+        <HeaderContainer />
 
-        <div className={Style.line}></div>
+        <main className={Style.root}>
 
-        <div className={Style.user_page}>
+          <NavMenuContainer />
 
-          <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-          <Route path='/dialogs' render={() => <DialogsContainer />} />
-          <Route path='/users' render={() => <UsersContainer />} />
-          <Route path='/groups' render={() => <Groups />} />
-          <Route path='/news' render={() => <News />} />
-          <Route path='/photos' render={() => <Photos />} />
-          <Route path='/setings' render={() => <Setings />} />
-          <Route path='/musics' render={() => <Musics />} />
-          <Route path='/login' render={() => <Login />} />
+          <div className={Style.line}></div>
 
-        </div>
+          <div className={Style.user_page}>
 
-      </main>
+            <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+            <Route path='/dialogs' render={() => <DialogsContainer />} />
+            <Route path='/users' render={() => <UsersContainer />} />
+            <Route path='/groups' render={() => <Groups />} />
+            <Route path='/news' render={() => <News />} />
+            <Route path='/photos' render={() => <Photos />} />
+            <Route path='/setings' render={() => <Setings />} />
+            <Route path='/musics' render={() => <Musics />} />
+            <Route path='/login' render={() => <Login />} />
 
-      <Sprite />
+          </div>
 
-    </div>
-  );
-};
+        </main>
 
-export default App;
+        <Sprite />
+
+      </div>
+    );
+  }
+}
+
+let mapStateToProps = (state) => ({
+  initialized: state.app.initialized,
+});
+
+export default compose (
+  withRouter,
+  connect(mapStateToProps, {
+    initializedSuccessTh
+  })
+)(App);
