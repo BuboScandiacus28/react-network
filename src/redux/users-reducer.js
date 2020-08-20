@@ -2,6 +2,7 @@ import {
     usersAPI,
     followAPI
 } from "../api/api";
+import { updateObjectInArray } from "../utils/object-helpers";
 
 let initialState = {
     users: [],
@@ -12,13 +13,13 @@ let initialState = {
     followingInProgress: []
 };
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET-USERS';
-const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
-const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
-const TOGGLE_FOLLOWING_IN_PROGRESS = 'TOGGLE-FOLLOWING-IN-PROGRESS';
+const FOLLOW = 'cyrillic-network/users/FOLLOW';
+const UNFOLLOW = 'cyrillic-network/users/UNFOLLOW';
+const SET_USERS = 'cyrillic-network/users/SET-USERS';
+const SET_CURRENT_PAGE = 'cyrillic-network/users/SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'cyrillic-network/users/SET-TOTAL-USERS-COUNT';
+const TOGGLE_IS_FETCHING = 'cyrillic-network/users/TOGGLE-IS-FETCHING';
+const TOGGLE_FOLLOWING_IN_PROGRESS = 'cyrillic-network/users/TOGGLE-FOLLOWING-IN-PROGRESS';
 
 export const follow = (userId) => ({
     type: FOLLOW,
@@ -52,36 +53,33 @@ export const toggleFollowingInProgress = (followingInProgress, userId) => ({
 
 //Thunks level
 
-export const getUsersTh = (currentPage, pageSize) => {
-    return (dispatch) => {
-        dispatch(toggleIsFetching(true));
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setTotalUsersCount(data.totalCount));
-        });
-    };
+export const getUsersTh = (currentPage, pageSize) => async (dispatch) => {
+    dispatch(toggleIsFetching(true));
+
+    let data = await usersAPI.getUsers(currentPage, pageSize);
+
+    dispatch(toggleIsFetching(false));
+    dispatch(setUsers(data.items));
+    dispatch(setTotalUsersCount(data.totalCount));
 };
 
-export const checkFollowEventTh = (check, userId) => {
-    return (dispatch) => {
-        dispatch(toggleFollowingInProgress(true, userId));
-        if (!check) {
-            followAPI.follow(userId).then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(follow(userId));
-                }
-            });
+export const checkFollowEventTh = (check, userId) => async (dispatch) => {
+    dispatch(toggleFollowingInProgress(true, userId));
+
+    if (!check) {
+        let data = await followAPI.follow(userId);
+        if (data.resultCode === 0) {
+            dispatch(follow(userId));
         }
-        else {
-            followAPI.unfollow(userId).then(data => {
-                if (data.resultCode === 0) {
-                  return dispatch(unfollow(userId));
-                }
-            });
+    } else {
+        let data = await followAPI.unfollow(userId);
+
+        if (data.resultCode === 0) {
+            return dispatch(unfollow(userId));
         }
-        dispatch(toggleFollowingInProgress(false, userId));
-    };
+    }
+
+    dispatch(toggleFollowingInProgress(false, userId));
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -91,14 +89,7 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW: {
             stateCopy = {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) return {
-                        ...u,
-                        followed: true
-                    };
-
-                    return u;
-                })
+                users: updateObjectInArray(state.users, "id", {followed: true}, action.userId)
             };
             return stateCopy;
         }
@@ -106,13 +97,7 @@ const usersReducer = (state = initialState, action) => {
         case UNFOLLOW:
             stateCopy = {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) return {
-                        ...u,
-                        followed: false
-                    };
-                    return u;
-                })
+                users: updateObjectInArray(state.users, "id", {followed: false}, action.userId)
             };
             return stateCopy;
             //Добавление новых пользователей
@@ -147,9 +132,7 @@ const usersReducer = (state = initialState, action) => {
         case TOGGLE_FOLLOWING_IN_PROGRESS:
             stateCopy = {
                 ...state,
-                followingInProgress: action.followingInProgress ?
-                    [...state.followingInProgress, action.userId] :
-                    state.followingInProgress.filter(id => id != action.userId)
+                followingInProgress: action.followingInProgress ? [...state.followingInProgress, action.userId] : state.followingInProgress.filter(id => id != action.userId)
             };
             return stateCopy;
         default:

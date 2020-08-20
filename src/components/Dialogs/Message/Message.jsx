@@ -2,7 +2,7 @@ import React from 'react';
 import Style from './Message.module.css';
 import profilePhoto from './../../../img/Smile.png';
 
-const Message = (props) => {
+const Message = ({user, message}) => {
 
   const userDirection = (user) => {
     if (user == "Ꙗ" || user == "Я" || user == "Me") return Style.right;
@@ -10,12 +10,12 @@ const Message = (props) => {
   };
 
   return (
-    <li className={`${Style.root} ${userDirection(props.user)}`}>
+    <li className={`${Style.root} ${userDirection(user)}`}>
       <div className={Style.icon_container}>
-        <img src={profilePhoto} alt={`Иконка пользователя ${props.user}`} className={Style.icon} />
-        <h1 className={Style.title}>{props.user}</h1>
+        <img src={profilePhoto} alt={`Иконка пользователя ${user}`} className={Style.icon} />
+        <h1 className={Style.title}>{user}</h1>
       </div>
-      <p className={Style.text}>{props.message}</p>
+      <p className={Style.text}>{message}</p>
     </li>
   );
 };

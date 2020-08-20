@@ -4,11 +4,11 @@ import LoginReduxForm from './LoginForm';
 import {loginTh} from './../../../redux/auth-reducer';
 import {Redirect} from 'react-router-dom';
 
-const LoginContainer = (props) => {
+const LoginContainer = ({loginTh, isAuth}) => {
   const onSubmit = (formData) => {
-    props.loginTh(formData.email, formData.password, formData.rememberMe);    
+    loginTh(formData.email, formData.password, formData.rememberMe);    
   };
-  if (props.isAuth) return (
+  if (isAuth) return (
     <Redirect to={'/profile'}/>
   );
   return (

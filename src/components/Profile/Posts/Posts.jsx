@@ -3,15 +3,15 @@ import Style from './Posts.module.css';
 import Post from './Post/Post';
 import PostsForm from './PostsForm/PostsForm';
 
-const Posts = (props) => {
+const Posts = ({postDate, addPost}) => {
 
-    let postElements = props.postDate.map(el => {
-        return (<Post message={el.message} />);
-    });
+    let postElements = postDate.map(el => <Post message={el.message} />);
 
     const onSubmit = (formData) => {
-        props.addPost(formData.textPosts);
+        addPost(formData.textPosts);
     };
+
+    console.log('Render');
 
     return (
         <div className={Style.root}>

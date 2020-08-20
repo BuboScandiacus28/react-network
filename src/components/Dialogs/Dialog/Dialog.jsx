@@ -2,11 +2,11 @@ import React from 'react';
 import Style from './Dialog.module.css';
 import {NavLink} from 'react-router-dom';
 
-const Dialog = (props) => {
+const Dialog = ({userId, title}) => {
   return (
     <div className={Style.root}>
       <div className={Style.online}></div>
-      <NavLink to={`/dialogs/${props.userId}`} className={Style.href}><h1 className={Style.title}>{props.title}</h1></NavLink>
+      <NavLink to={`/dialogs/${userId}`} className={Style.href}><h1 className={Style.title}>{title}</h1></NavLink>
     </div>
   );
 };

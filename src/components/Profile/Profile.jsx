@@ -4,11 +4,11 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import PostsContainer from './Posts/PostsContainer';
 import Preloader from '../common/Preloader/Preloader';
 
-const Profile = (props) => {
-    if (!props.profile) return (<Preloader />);
+const Profile = ({profile, status, updateStatusTh}) => {
+    if (!profile) return (<Preloader />);
     return (
         <div className={Style.root}>
-            <ProfileInfo  profilePhoto={props.profile.photos.large} fullName={props.profile.fullName} status={props.status} contacts={props.profile.contacts} updateStatusTh={props.updateStatusTh}/>
+            <ProfileInfo  profilePhoto={profile.photos.large} fullName={profile.fullName} status={status} contacts={profile.contacts} updateStatusTh={updateStatusTh}/>
             <PostsContainer />
         </div>
     );

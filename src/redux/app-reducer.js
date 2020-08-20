@@ -1,24 +1,24 @@
-import {getAuthUserTh} from "./auth-reducer";
+import {
+    getAuthUserTh
+} from "./auth-reducer";
 
 let initialState = {
     initialized: false
 };
 
-const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS';
+const INITIALIZED_SUCCESS = 'cyrillic-network/app/INITIALIZED-SUCCESS';
 
 export const initializedSuccess = () => ({
     type: INITIALIZED_SUCCESS
 });
 
-export const initializedSuccessTh = () => {
-    return (dispatch) => {
-        let promise = dispatch(getAuthUserTh());
+export const initializedSuccessTh = () => (dispatch) => {
+    let promise = dispatch(getAuthUserTh());
 
-        Promise.all([promise])
-            .then(() => {
-                dispatch(initializedSuccess());
-            });
-    };
+    Promise.all([promise])
+        .then(() => {
+            dispatch(initializedSuccess());
+        });
 };
 
 const appReducer = (state = initialState, action) => {

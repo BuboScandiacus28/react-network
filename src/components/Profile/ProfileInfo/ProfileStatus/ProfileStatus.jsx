@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import Style from './ProfileStatus.module.css';
 
-const ProfileStatus = (props) => {
+const ProfileStatus = ({status, updateStatusTh}) => {
 
     let [editMode, setEditMode] = useState(false);
-    let [status, setStatus] = useState(props.status);
+    let [localStatus, setLocalStatus] = useState(status);
 
     useEffect( () => {
-        setStatus(props.status);
-    }, [props.status]);
+        setLocalStatus(status);
+    }, [status]);
 
     let activateEditMode = () => {
         setEditMode(true); 
@@ -16,22 +16,22 @@ const ProfileStatus = (props) => {
 
     let deactivateEditMode = () => {
         setEditMode(false);
-        props.updateStatusTh(status);
+        updateStatusTh(status);
     };
 
     let onStatusChange = (e) => {
-        setStatus(e.currentTarget.value);
+        setLocalStatus(e.currentTarget.value);
     };
 
     return (
         <div className={Style.root}>
             { 
                 !editMode &&
-                <p onClick={activateEditMode} className={Style.status}>{props.status}</p>
+                <p onClick={activateEditMode} className={Style.status}>{localStatus}</p>
             }
             {
                 editMode &&
-                <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status} type="text" />
+                <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={localStatus} type="text" />
             }
         </div>
     );

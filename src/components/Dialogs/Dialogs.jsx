@@ -4,20 +4,13 @@ import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
 import DialogsReduxForm from './DialogsForm/DialogsForm';
 
-const Dialogs = (props) => {
+const Dialogs = ({dialogDate, messageDate, addMessage}) => {
 
-  let dialogElements = props.dialogDate.map(el => {
-    return (<Dialog userId={el.userId} title={el.title} />);
-  });
+  let dialogElements = dialogDate.map(el => <Dialog userId={el.userId} title={el.title} />);
 
-  let messageElements = props.messageDate.map(el => {
-    return (<Message user={el.user} message={el.message} />);
-  });
+  let messageElements = messageDate.map(el => <Message user={el.user} message={el.message} />);
 
-  const onSubmit = (formData) => {
-    console.log(formData);
-    props.addMessage(formData.textMessage);
-  };
+  const onSubmit = (formData) => addMessage(formData.textMessage);
 
   return (
     <div className={Style.root}>

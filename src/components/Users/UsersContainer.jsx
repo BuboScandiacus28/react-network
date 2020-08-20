@@ -13,15 +13,18 @@ import {getUsersSuper, getPageSize, getTotalUsersCount, getCurrentPage, getIsFet
 class UsersContainer extends React.Component {
 
   componentDidMount() {
-    this.props.getUsersTh(this.props.currentPage, this.props.pageSize);
+    let {currentPage, pageSize} = this.props;
+    this.props.getUsersTh(currentPage, pageSize);
   }
 
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber);
+    
+    let {pageSize} = this.props;
 
-    this.props.getUsersTh(pageNumber, this.props.pageSize);
+    this.props.getUsersTh(pageNumber, pageSize);
   }
-
+  
   render() {
     return (
       <>
@@ -30,7 +33,7 @@ class UsersContainer extends React.Component {
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
           usersDate={this.props.usersDate}
-          checkFollowEvent={this.props.checkFollowEvent}
+          checkFollowEvent={this.props.checkFollowEventTh}
           onPageChanged={this.onPageChanged} 
           followingInProgress={this.props.followingInProgress}/>
       </>

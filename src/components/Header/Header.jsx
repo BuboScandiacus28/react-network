@@ -2,7 +2,7 @@ import React from 'react';
 import Style from './Header.module.css';
 import {NavLink} from 'react-router-dom';
 
-const Header = (props) => {
+const Header = ({isAuth, login, logoutTh}) => {
     return (
         <header>
             <div className={Style.left_col}>
@@ -19,7 +19,7 @@ const Header = (props) => {
             </div>
             <div className={Style.right_col}>
                 <div className={Style.loginBlock}>
-                    {props.isAuth ? <>{props.login}<button onClick={props.logoutTh}>Log out</button></> : <NavLink to={'/login'}>Login</NavLink>}
+                    {isAuth ? <>{login}<button onClick={logoutTh}>Log out</button></> : <NavLink to={'/login'}>Login</NavLink>}
                 </div>
             </div>
         </header>

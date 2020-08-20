@@ -2,9 +2,7 @@ import React from 'react';
 import Style from './Login.module.css';
 import LoginFormContainer from './LoginForm/LoginFormContainer';
 
-const Login = (props) => {
-    
-
+const Login = () => {
     return (
         <div className={Style.root}>
             <h1>Login</h1>

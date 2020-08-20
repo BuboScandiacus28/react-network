@@ -2,10 +2,8 @@ import React from 'react';
 import Style from './NavMenu.module.css';
 import NavMenuItem from './NavMenuItem/NavMenuItem';
 
-const NavMenu = (props) => {
-  let navMenuItemElements = props.navMenuItemDate.map(el => {
-    return (<NavMenuItem href={el.href} iconId={el.iconId} title={el.title} />);
-  });
+const NavMenu = ({navMenuItemDate}) => {
+  let navMenuItemElements = navMenuItemDate.map(el => <NavMenuItem href={el.href} iconId={el.iconId} title={el.title} />);
   
   return (
     <aside>

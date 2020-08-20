@@ -46,7 +46,7 @@ let initialState = {
     ], 
 };
 
-const ADD_MESSAGE = 'ADD-MESSAGE';
+const ADD_MESSAGE = 'cyrillic-network/dialogs/ADD-MESSAGE';
 
 export const addMessage = (newMessageText) => ({type: ADD_MESSAGE, newMessageText});
 

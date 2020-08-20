@@ -1,16 +1,16 @@
 import React from 'react';
 import Style from './DialogsForm.module.css';
-import {reduxForm, Field} from 'redux-form';
-import {Textarea} from '../../common/FormControls/FormControls';
+import {reduxForm} from 'redux-form';
+import {Textarea, createField} from '../../common/FormControls/FormControls';
 import {maxLengthTh, requiredField} from '../../../utils/validators/validator';
 
 const maxLength100 = maxLengthTh(100);
 
-const DialogsForm = (props) => {
+const DialogsForm = ({handleSubmit}) => {
   return (
-    <form className={Style.send_message_form} onSubmit={props.handleSubmit}>
+    <form className={Style.send_message_form} onSubmit={handleSubmit}>
       <div className={Style.send_message_form_wrapper}>
-        <Field validate={[requiredField, maxLength100]} name={"textMessage"} component={Textarea} className={Style.message_input} placeholder="Вырѣзать посланїѥ... "></Field>
+        {createField([requiredField, maxLength100], Textarea, "textMessage", "Вырѣзать посланїѥ... ", {className: Style.message_input})}
         <div className={Style.btn_send_message_container}>
           <button className={Style.btn_send_message}></button>
         </div>

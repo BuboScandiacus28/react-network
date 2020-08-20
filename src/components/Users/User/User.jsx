@@ -3,26 +3,28 @@ import Style from './User.module.css';
 import userPhoto from './../../../img/Smile.png';
 import {NavLink} from 'react-router-dom';
 
-const User = (props) => {
+const User = ({userId, photoUrl, followingInProgress, followEvent, followed, name, country, city, status}) => {
+
   let checkFollow = (check) => {
     if (!check) return 'Follow';
     else return 'Unfollow';
   };
+  
   return (
     <div className={Style.root}>
       <div className={Style.left_col}>
-        <NavLink to={`/profile/${props.userId}`} className={Style.profile_photo_container}>
-          <img src={props.photoUrl != null ? props.photoUrl : userPhoto} alt="Фото пользователя"/>
+        <NavLink to={`/profile/${userId}`} className={Style.profile_photo_container}>
+          <img src={photoUrl != null ? photoUrl : userPhoto} alt="Фото пользователя"/>
         </NavLink>
-        <button disabled={props.followingInProgress.some(id => id === props.userId)} onClick={() => props.followEvent(props.followed, props.userId)} className={Style.follow}>{checkFollow(props.followed)}</button>
+        <button disabled={followingInProgress.some(id => id === userId)} onClick={() => followEvent(followed, userId)} className={Style.follow}>{checkFollow(followed)}</button>
       </div>
       <div className={Style.right_col}>
-        <h2 className={Style.full_name}>{props.name}</h2>
+        <h2 className={Style.full_name}>{name}</h2>
         <div className={Style.location}>
-          <h2 className={Style.country}>{props.country},</h2> 
-          <h2 className={Style.city}>{props.city}</h2>
+          <h2 className={Style.country}>{country},</h2> 
+          <h2 className={Style.city}>{city}</h2>
         </div>
-        <p className={Style.status}>{props.status}</p>
+        <p className={Style.status}>{status}</p>
       </div>
     </div>
   );
