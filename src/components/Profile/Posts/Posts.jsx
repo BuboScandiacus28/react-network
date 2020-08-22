@@ -5,13 +5,11 @@ import PostsForm from './PostsForm/PostsForm';
 
 const Posts = ({postDate, addPost}) => {
 
-    let postElements = postDate.map(el => <Post message={el.message} />);
+    let postElements = postDate.map((el, index) => <Post key={index} message={el.message} />);
 
     const onSubmit = (formData) => {
         addPost(formData.textPosts);
     };
-
-    console.log('Render');
 
     return (
         <div className={Style.root}>

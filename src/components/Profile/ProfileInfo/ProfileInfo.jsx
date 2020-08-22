@@ -2,11 +2,11 @@ import React from 'react';
 import Style from './ProfileInfo.module.css';
 import userPhoto from './../../../img/cat.jpg';
 import ProfileStatus from './ProfileStatus/ProfileStatus';
-import { createField, Input } from './../../common/FormControls/FormControls';
+//import { createField, Input } from './../../common/FormControls/FormControls';
 
 const ProfileInfo = ({ profilePhoto, fullName, status, updateStatusTh, contacts, isOwner, savePhotoTh}) => {
     let contactsListElement = (props) => {
-        return props != null && props != "" ? <a href={props}>{props}</a> : "Информация отсутствует";
+        return props != null && props !== "" ? <a href={props}>{props}</a> : "Информация отсутствует";
     };
 
     const onMainPhotoSelected = (e) => {
@@ -23,7 +23,12 @@ const ProfileInfo = ({ profilePhoto, fullName, status, updateStatusTh, contacts,
                     <div className={Style.photo_container}>
                         <img src={profilePhoto != null ? profilePhoto : userPhoto} alt="Фото профиля" className={Style.photo} />
                     </div>
-                    {isOwner && <input type={'file'} className={Style.insert_photo} onChange={onMainPhotoSelected} />}
+                    {isOwner && 
+                        <>
+                            <input type={'file'} id={'profileInfo/insertPhotoId'} className={Style.insert_photo_input} onChange={onMainPhotoSelected} />
+                            <label htmlFor={'profileInfo/insertPhotoId'} className={Style.insert_photo_label}>Загрузить новое фото...</label>
+                        </>
+                    }
                 </div>
                 <div className={Style.description_container}>
                     <h1 className={Style.name}>{fullName}</h1>

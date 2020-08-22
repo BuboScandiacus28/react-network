@@ -6,7 +6,7 @@ let Preloader = () => {
 
   return (
     <div className={Style.loader}>
-      <img className={Style.loaderInner} src={preloader} />
+      <img className={Style.loaderInner} src={preloader} alt='Прелоадер'/>
     </div>
   );
 

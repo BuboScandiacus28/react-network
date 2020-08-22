@@ -5,7 +5,7 @@ import profilePhoto from './../../../img/Smile.png';
 const Message = ({user, message}) => {
 
   const userDirection = (user) => {
-    if (user == "Ꙗ" || user == "Я" || user == "Me") return Style.right;
+    if (user === "Ꙗ" || user === "Я" || user === "Me") return Style.right;
     else return Style.left;
   };
 

@@ -3,7 +3,7 @@ import Style from './NavMenu.module.css';
 import NavMenuItem from './NavMenuItem/NavMenuItem';
 
 const NavMenu = ({navMenuItemDate}) => {
-  let navMenuItemElements = navMenuItemDate.map(el => <NavMenuItem href={el.href} iconId={el.iconId} title={el.title} />);
+  let navMenuItemElements = navMenuItemDate.map((el, index) => <NavMenuItem key={index} href={el.href} iconId={el.iconId} title={el.title} />);
   
   return (
     <aside>

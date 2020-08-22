@@ -6,9 +6,9 @@ import DialogsReduxForm from './DialogsForm/DialogsForm';
 
 const Dialogs = ({dialogDate, messageDate, addMessage}) => {
 
-  let dialogElements = dialogDate.map(el => <Dialog userId={el.userId} title={el.title} />);
+  let dialogElements = dialogDate.map(el => <Dialog key={el.userId} userId={el.userId} title={el.title} />);
 
-  let messageElements = messageDate.map(el => <Message user={el.user} message={el.message} />);
+  let messageElements = messageDate.map((el, index) => <Message key={index} user={el.user} message={el.message} />);
 
   const onSubmit = (formData) => addMessage(formData.textMessage);
 
