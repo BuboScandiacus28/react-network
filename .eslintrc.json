@@ -21,7 +21,7 @@
     "rules": {
         "linebreak-style": [
             "error",
-            "unix"
+            "window"
         ],
         "no-unused-vars": ["error", { "caughtErrorsIgnorePattern": "^ignore" }],
     	"react/jsx-uses-react": 1,

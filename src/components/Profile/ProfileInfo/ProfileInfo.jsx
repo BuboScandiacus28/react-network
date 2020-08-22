@@ -2,21 +2,32 @@ import React from 'react';
 import Style from './ProfileInfo.module.css';
 import userPhoto from './../../../img/cat.jpg';
 import ProfileStatus from './ProfileStatus/ProfileStatus';
+import { createField, Input } from './../../common/FormControls/FormControls';
 
-const ProfileInfo = ({profilePhoto, fullName, status, updateStatusTh, contacts}) => {
+const ProfileInfo = ({ profilePhoto, fullName, status, updateStatusTh, contacts, isOwner, savePhotoTh}) => {
     let contactsListElement = (props) => {
         return props != null && props != "" ? <a href={props}>{props}</a> : "Информация отсутствует";
     };
-    
+
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            savePhotoTh(e.target.files[0]);
+        }
+    };
+
+    //createField([], Input, 'insertPhoto', null, {type: 'file', className: 'insertPhoto'})
     return (
         <div className={Style.root}>
             <div className={Style.information}>
-                <div className={Style.photo_container}>
-                    <img src={profilePhoto != null ? profilePhoto : userPhoto} alt="Фото профиля" className={Style.photo} />
+                <div className={Style.photo_wrapper}>
+                    <div className={Style.photo_container}>
+                        <img src={profilePhoto != null ? profilePhoto : userPhoto} alt="Фото профиля" className={Style.photo} />
+                    </div>
+                    {isOwner && <input type={'file'} className={Style.insert_photo} onChange={onMainPhotoSelected} />}
                 </div>
                 <div className={Style.description_container}>
                     <h1 className={Style.name}>{fullName}</h1>
-                    <ProfileStatus status={status != null ? status : "Изменить статус"} updateStatusTh={updateStatusTh}/>
+                    <ProfileStatus status={status != null ? status : "Изменить статус"} updateStatusTh={updateStatusTh} />
                     <ul className={Style.contacts_list}>
                         <h2 className={Style.contacts_list_title}>Контакты</h2>
                         <li className={Style.contacts_list_items}><h2>facebook:</h2> {contactsListElement(contacts.facebook)}</li>
