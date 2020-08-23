@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Style from './ProfileInfo.module.css';
 import userPhoto from './../../../img/cat.jpg';
-import ProfileStatus from './ProfileStatus/ProfileStatus';
-//import { createField, Input } from './../../common/FormControls/FormControls';
+import ProfileData from './ProfileData/ProfileData';
+import ProfileDataReduxForm from './ProfileDataForm/ProfileDataForm';
 
-const ProfileInfo = ({ profilePhoto, fullName, status, updateStatusTh, contacts, isOwner, savePhotoTh}) => {
-    let contactsListElement = (props) => {
-        return props != null && props !== "" ? <a href={props}>{props}</a> : "Информация отсутствует";
-    };
+const ProfileInfo = ({profilePhoto, fullName, status, updateStatusTh, contacts, isOwner, savePhotoTh, lookingForAJob, lookingForAJobDescription, saveProfileTh, aboutMe}) => {
+
+    let [editMode, setEditMode] = useState(false);
 
     const onMainPhotoSelected = (e) => {
         if (e.target.files.length) {
@@ -15,7 +14,15 @@ const ProfileInfo = ({ profilePhoto, fullName, status, updateStatusTh, contacts,
         }
     };
 
-    //createField([], Input, 'insertPhoto', null, {type: 'file', className: 'insertPhoto'})
+    const onSubmit = (formData) => {
+        saveProfileTh(formData).then(
+            () => {
+                setEditMode(false);
+            }
+        );
+        //
+    };
+
     return (
         <div className={Style.root}>
             <div className={Style.information}>
@@ -23,29 +30,29 @@ const ProfileInfo = ({ profilePhoto, fullName, status, updateStatusTh, contacts,
                     <div className={Style.photo_container}>
                         <img src={profilePhoto != null ? profilePhoto : userPhoto} alt="Фото профиля" className={Style.photo} />
                     </div>
-                    {isOwner && 
+                    {isOwner &&
                         <>
                             <input type={'file'} id={'profileInfo/insertPhotoId'} className={Style.insert_photo_input} onChange={onMainPhotoSelected} />
                             <label htmlFor={'profileInfo/insertPhotoId'} className={Style.insert_photo_label}>Загрузить новое фото...</label>
                         </>
                     }
                 </div>
-                <div className={Style.description_container}>
-                    <h1 className={Style.name}>{fullName}</h1>
-                    <ProfileStatus status={status != null ? status : "Изменить статус"} updateStatusTh={updateStatusTh} />
-                    <ul className={Style.contacts_list}>
-                        <h2 className={Style.contacts_list_title}>Контакты</h2>
-                        <li className={Style.contacts_list_items}><h2>facebook:</h2> {contactsListElement(contacts.facebook)}</li>
-                        <li className={Style.contacts_list_items}><h2>website:</h2> {contactsListElement(contacts.website)}</li>
-                        <li className={Style.contacts_list_items}><h2>vk:</h2> {contactsListElement(contacts.vk)}</li>
-                        <li className={Style.contacts_list_items}><h2>twitter:</h2> {contactsListElement(contacts.twitter)}</li>
-                        <li className={Style.contacts_list_items}><h2>instagram:</h2> {contactsListElement(contacts.instagram)}</li>
-                        <li className={Style.contacts_list_items}><h2>youtube:</h2> {contactsListElement(contacts.youtube)}</li>
-                        <li className={Style.contacts_list_items}><h2>github:</h2> {contactsListElement(contacts.github)}</li>
-                        <li className={Style.contacts_list_items}><h2>mainLink:</h2> {contactsListElement(contacts.mainLink)}</li>
-                    </ul>
-
-                </div>
+                {
+                    editMode
+                        ? <ProfileDataReduxForm initialValues={
+                        {
+                            aboutMe: status,
+                            fullName,
+                            lookingForAJob,
+                            lookingForAJobDescription,
+                            contacts
+                        }  
+                        } onSubmit={onSubmit} contacts={contacts}/>
+                        : <ProfileData fullName={fullName} status={status} updateStatusTh={updateStatusTh}
+                            contacts={contacts} isOwner={isOwner} goToEditMode={() => setEditMode(true)}
+                            lookingForAJob={lookingForAJob} lookingForAJobDescription={lookingForAJobDescription} aboutMe={aboutMe}/>
+                }
+                
             </div>
         </div>
     );

@@ -1,0 +1,47 @@
+.login_form {
+    min-width: 30rem;
+}
+
+.login_form button, .login_form input:not([type="checkbox"]){
+    margin-top: 2rem;
+
+    padding: 0.8rem 1rem;
+
+    border: 2px solid #ba7338;
+    border-radius: 10px;
+
+    background-color: #d5b08d;
+    color: #ba7338;
+
+    min-width: 100%;
+
+    box-sizing: border-box;
+
+    font-size: 1.2rem;
+}
+
+.checkbox_container {
+    display: flex;
+    align-items: center;
+
+    font-size: 1.2rem;
+
+    color: #ba7338;
+
+    margin-top: 2rem;
+}
+
+.checkbox_container p {
+    margin: 0 0 0 1rem;
+}
+
+.login_form button {
+    font-size: 1.5rem;
+}
+
+.login_form input::-webkit-input-placeholder {
+    color: #ba7338;
+}
+.login_form input:-moz-placeholder {
+    color: #ba7338;
+}

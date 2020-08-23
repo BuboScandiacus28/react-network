@@ -1,0 +1,72 @@
+.edit_profile_form {
+    margin-left: 4rem;
+    min-width: 30rem;
+}
+
+.edit_profile_form > div, 
+.edit_profile_form ul > li {
+    width: 100%;
+    margin-bottom: 2rem;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.edit_profile_form > div > *, 
+.edit_profile_form ul > li > * {
+    flex-basis: 100%;
+    
+    font-size: 1.2rem;
+}
+
+.edit_profile_form ul > h1 {
+    margin-bottom: 2rem;
+    
+}
+
+.edit_profile_form ul > div {
+    margin-left: 1rem;
+}
+
+div.edit_profile_checkbox {
+    flex-wrap: nowrap;
+}
+
+div.edit_profile_checkbox > b {
+    flex-basis: 11rem;
+}
+
+div.edit_profile_checkbox > div {
+    flex-basis: 1rem;
+}
+
+div.edit_profile_checkbox > *:nth-child(even) {
+    display: flex;
+}
+
+.edit_profile_form input:not([type='checkbox']),
+.edit_profile_form textarea,
+.edit_profile_form button {
+    padding: 0.8rem 1rem;
+
+    border: 2px solid #ba7338;
+    border-radius: 5px;
+
+    background-color: #d5b08d;
+    color: #ba7338;
+
+    width: 100%;
+}
+
+.edit_profile_form textarea {
+    resize: none;
+
+    height: 10rem;
+}
+
+.edit_profile_form button {
+    font-size: 1.5rem;
+
+    font-weight: bold;
+}

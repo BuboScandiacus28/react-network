@@ -6,7 +6,7 @@ import {requiredField} from '../../../utils/validators/validator';
 
 const LoginForm = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={handleSubmit}>
+        <form class={Style.login_form} onSubmit={handleSubmit}>
             {createField([requiredField], Input, "email", "email", {type: "text"})}
             {createField([requiredField], Input, "password", "password", {type: "password"})}
             <div className={Style.checkbox_container}>

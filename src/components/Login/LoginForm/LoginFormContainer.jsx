@@ -8,9 +8,11 @@ const LoginContainer = ({loginTh, isAuth}) => {
   const onSubmit = (formData) => {
     loginTh(formData.email, formData.password, formData.rememberMe);    
   };
+
   if (isAuth) return (
     <Redirect to={'/profile'}/>
   );
+  
   return (
     <LoginReduxForm onSubmit={onSubmit} />
   );

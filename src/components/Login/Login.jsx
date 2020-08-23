@@ -5,7 +5,7 @@ import LoginFormContainer from './LoginForm/LoginFormContainer';
 const Login = () => {
     return (
         <div className={Style.root}>
-            <h1>Login</h1>
+            <h1 className={Style.login_title}>Login</h1>
             <LoginFormContainer />
         </div>
     );

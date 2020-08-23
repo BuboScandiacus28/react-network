@@ -45,30 +45,3 @@
     color: #ba7338;
 }
 
-.description_container {
-    margin-left: 5rem;
-}
-
-.description_container h1 {
-    font-size: 3rem;
-
-}
-
-.description_container > h2 {
-    font-size: 1.5rem;
-
-    margin-top: 0.5rem;
-}
-
-.contacts_list_items {
-    font-size: 1.2rem;
-
-    margin-top: 0.3rem;
-    margin-left: 0.3rem;
-}
-
-.contacts_list_items h2 {
-    font-size: 1.2rem;
-    
-    display: inline;
-}

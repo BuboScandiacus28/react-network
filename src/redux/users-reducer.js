@@ -2,6 +2,7 @@ import {
     usersAPI,
     followAPI
 } from "../api/api";
+
 import { updateObjectInArray } from "../utils/object-helpers";
 
 let initialState = {

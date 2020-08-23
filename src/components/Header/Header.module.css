@@ -60,5 +60,18 @@ header {
 .loginBlock > * {
     color: #ba7338;
 
+    display: inline;
+
     font-size: 1.5rem;
+}
+
+.login_btn {
+
+    border: 2px solid #ba7338;
+    border-radius: 10px;
+
+    background-color: #d5b08d;
+
+    margin-left: 2rem;
+    padding: 0.5rem 1rem;
 }

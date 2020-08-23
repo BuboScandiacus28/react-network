@@ -1,0 +1,42 @@
+.description_container {
+    margin-left: 5rem;
+    width: 100%;
+}
+
+.top_col {
+    display: flex;
+    justify-content: space-between;
+}
+
+.go_to_edit_mode_btn {
+    width: 3rem;
+    height: 3rem;
+
+    fill: #ba7338;
+
+    opacity: 1;
+
+    transition: 1s;
+}
+
+.go_to_edit_mode_btn:hover {
+    opacity: 0.5;
+}
+
+.description_container h1 {
+    font-size: 3rem;
+
+}
+
+.description_container > h2 {
+    margin-top: 0.5rem;
+}
+
+h2.job_title {
+    margin: 2rem 0;
+}
+
+.job_description {
+    width: 100%;
+    
+}

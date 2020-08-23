@@ -19,7 +19,13 @@ const Header = ({isAuth, login, logoutTh}) => {
             </div>
             <div className={Style.right_col}>
                 <div className={Style.loginBlock}>
-                    {isAuth ? <>{login}<button onClick={logoutTh}>Log out</button></> : <NavLink to={'/login'}>Login</NavLink>}
+                    {
+                        isAuth 
+                        ? <>
+                            <h1 className={Style.user_name}>{login}</h1>
+                            <button className={Style.login_btn} onClick={logoutTh}>Log out</button>
+                        </> 
+                        : <NavLink className={Style.login_btn} to={'/login'}>Login</NavLink>}
                 </div>
             </div>
         </header>

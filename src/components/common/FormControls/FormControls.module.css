@@ -7,3 +7,13 @@
     background-color: rgb(177, 57, 57);
     border: 1px solid red;
 }
+
+.form_control > input[type="checkbox"] {
+    margin: 0;
+}
+
+.form_control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
