@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import LoginReduxForm from './LoginForm';
-import {loginTh} from './../../../redux/auth-reducer';
+import {loginTh, getCaptchaTh} from './../../../redux/auth-reducer';
 import {Redirect} from 'react-router-dom';
 
-const LoginContainer = ({loginTh, isAuth}) => {
+const LoginContainer = ({loginTh, isAuth, captchaUrl}) => {
   const onSubmit = (formData) => {
-    loginTh(formData.email, formData.password, formData.rememberMe);    
+    loginTh(formData.email, formData.password, formData.rememberMe, formData.captcha);    
   };
 
   if (isAuth) return (
@@ -14,16 +14,17 @@ const LoginContainer = ({loginTh, isAuth}) => {
   );
   
   return (
-    <LoginReduxForm onSubmit={onSubmit} />
+    <LoginReduxForm captchaUrl={captchaUrl} onSubmit={onSubmit} />
   );
 };
 
 let mapToStateProps = (state) => {
   return {
       isAuth: state.auth.isAuth,
+      captchaUrl: state.auth.captchaUrl
   };
 };
 
 export default connect(mapToStateProps, {
-  loginTh
+  loginTh, getCaptchaTh 
 })(LoginContainer);

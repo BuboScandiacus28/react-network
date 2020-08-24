@@ -43,11 +43,12 @@ export const authAPI = {
                 return (response.data);
             });
     },
-    login(email, password, rememberMe = false) {
+    login(email, password, rememberMe = false, captcha) {
         return instance.post(`auth/login`, {
                 email,
                 password,
-                rememberMe
+                rememberMe,
+                captcha
             })
             .then(response => {
                 //response.cookie('token', '', {sameSite: 'Lux', secure: 'Lux'});
@@ -102,6 +103,16 @@ export const profileAPI = {
     },
     saveProfile(profileData) {
         return instance.put(`profile`, profileData)
+            .then(response => {
+                //response.cookie('token', '', {sameSite: 'Lux', secure: 'Lux'});
+                return (response.data);
+            });
+    }
+};
+
+export const securityAPI = {
+    getCaptcha() {
+        return instance.get(`security/get-captcha-url`)
             .then(response => {
                 //response.cookie('token', '', {sameSite: 'Lux', secure: 'Lux'});
                 return (response.data);

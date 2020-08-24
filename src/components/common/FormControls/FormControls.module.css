@@ -3,9 +3,11 @@
     border: 1px solid red;
 }
 
-.form_control.error span {
+.form_control.error p {
     background-color: rgb(177, 57, 57);
     border: 1px solid red;
+
+    flex-basis: 100%;
 }
 
 .form_control > input[type="checkbox"] {
@@ -16,4 +18,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
